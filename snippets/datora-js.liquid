@@ -1,0 +1,114 @@
+var datoraCounter = 0;
+
+const priceFormatter = new Intl.NumberFormat('de-DE', {
+  style: 'currency',
+  currency: 'EUR'
+});
+
+function initDatora() {
+  datoraCounter++;
+
+  if(typeof co2 === 'undefined')
+    return setTimeout(initDatora, [10])
+
+  // firing first call to get co2 cached ASAP
+  co2.itemDiscountFull(1, 1, [], 1, 1)
+
+  const datoraForm = document.querySelector('form#datora-form');
+  const datoraInput = document.querySelector('input[name="datora-discount"][form="datora-form"]'); // this could be null if cart-drawer is empty
+
+  if(datoraForm !== null && datoraInput !== null) {
+    const datoraContainer = datoraInput.closest('.datora-discount-field-container');
+    document.querySelector('input[name="datora-discount"][form="datora-form"]').addEventListener('input', e => {
+      datoraContainer.remove('error');
+    })
+
+    datoraForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const fd = new FormData(e.target);
+      const discountCode = fd.get('datora-discount') || '';
+
+      if(discountCode.length < 1) {
+        return;
+      }
+
+      datoraContainer.classList.add('loading');
+      co2.setDiscountCode(discountCode).then(successful => {
+        if(successful) {
+          datoraContainer.classList.add('done');
+
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
+            bubbles: true
+          }));
+        } else {
+          datoraContainer.classList.add('error');
+        }
+      }).finally(() => {
+        setTimeout(() => {
+
+          datoraContainer.classList.remove('done', 'loading');
+        }, [500])
+      })
+    })
+  }
+
+  function setDatoraClasses(parentElem, fakeComparePrice) {
+    parentElem.querySelectorAll('[data-datora-classes]').forEach(elem => {
+      const newClasses = elem.dataset.datoraClasses;
+
+      if(newClasses.length === 0) {
+        return;
+      }
+
+      if(newClasses.includes('price--compare')) {
+        elem.querySelector('span:not(.visually-hidden)').textContent = fakeComparePrice;
+      }
+
+      elem.setAttribute('class', newClasses);
+    })
+  }
+
+  co2.getDiscountCode().then(code => {
+    document.querySelectorAll('[data-datora-pid]').forEach(div => {
+      const [ vid, pid, spgid, tags, price ] = [
+        div.dataset.datoraVid,
+        div.dataset.datoraPid,
+        div.dataset.datoraSpgid,
+        div.dataset.datoraTags,
+        div.dataset.datoraPrice
+      ]
+
+      if(!(vid && pid && price))
+        return;
+
+      co2.itemDiscountFull(Number(pid), Number(vid), tags ? tags.split(',') : [], Number(price), 1, spgid === "" ? null : spgid).then(data => {
+        switch(data.calc) {
+          case "perc":
+            if(data.discPerc === 0) {
+              return;
+            }
+
+
+            let newPrice = price - price * data.discPerc/100;
+            newPrice = priceFormatter.format(newPrice/100, "€{{amount_with_comma_separator}}");
+
+            div.querySelector('.price-list .price:not(.price--compare) span:not(.visually-hidden)').textContent = newPrice;
+
+            let originalPriceAsComparePrice = priceFormatter.format(price/100, "€{{amount_with_comma_separator}}");
+            setDatoraClasses(div, originalPriceAsComparePrice);
+
+            div.querySelector('[data-datora]').innerHTML = '-' + String(data.discPerc) + '% ' + code.toUpperCase();
+            break;
+          default:
+            break;
+        }
+
+        div.querySelector('.datora.discount-badge').removeAttribute('hidden');
+      })
+
+    })
+  })
+}
+
+initDatora();
