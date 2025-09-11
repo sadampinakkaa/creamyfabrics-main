@@ -1092,28 +1092,89 @@ IMPLEMENTATION NOTE: if during the iteration of the options we have found an opt
   {% endfor %}
 
   function updateVariantText(variantId) {
+    console.log('updateVariantText called with variantId:', variantId);
+    console.log('Available variant text data:', variantTextData);
     const variantTextElement = document.getElementById('variant-text-display');
+    console.log('Variant text element found:', variantTextElement);
+    
     if (variantTextElement && variantTextData[variantId]) {
+      console.log('Setting text to:', variantTextData[variantId]);
       variantTextElement.textContent = variantTextData[variantId];
       variantTextElement.style.display = 'block';
     } else if (variantTextElement) {
+      console.log('Hiding variant text element - no text for variant', variantId);
       variantTextElement.style.display = 'none';
     }
   }
 
   // Initialize variant text on page load
-  document.addEventListener('DOMContentLoaded', function() {
+  function initializeVariantText() {
     const currentVariant = getHbCurrentVariant();
     if (currentVariant && currentVariant.id) {
       updateVariantText(currentVariant.id);
     }
-  });
+  }
 
-  // Listen for variant changes
+  // Try multiple initialization methods
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeVariantText);
+  } else {
+    initializeVariantText();
+  }
+  
+  // Fallback with timeout
+  setTimeout(initializeVariantText, 100);
+
+  // Listen for variant changes - multiple approaches
   document.addEventListener('variant:changed', function(event) {
+    console.log('variant:changed event received:', event);
     if (event.detail && event.detail.variant && event.detail.variant.id) {
+      console.log('Processing variant change for ID:', event.detail.variant.id);
       updateVariantText(event.detail.variant.id);
     }
   });
+
+  // Also listen for option changes directly
+  document.addEventListener('change', function(event) {
+    if (event.target && event.target.name && event.target.name.startsWith('option')) {
+      console.log('Option change detected:', event.target.name, event.target.value);
+      // Use a small delay to allow the variant ID to be updated
+      setTimeout(function() {
+        const form = event.target.closest('form');
+        if (form) {
+          const variantIdInput = form.querySelector('input[name="id"]');
+          if (variantIdInput && variantIdInput.value) {
+            console.log('Current variant ID from form:', variantIdInput.value);
+            updateVariantText(parseInt(variantIdInput.value));
+          }
+        }
+      }, 50);
+    }
+  });
+
+  // Listen for variant ID input changes directly
+  document.addEventListener('change', function(event) {
+    if (event.target && event.target.name === 'id') {
+      console.log('Variant ID input changed:', event.target.value);
+      updateVariantText(parseInt(event.target.value));
+    }
+  });
+
+  // Use MutationObserver to watch for variant ID changes
+  setTimeout(function() {
+    const variantIdInputs = document.querySelectorAll('input[name="id"]');
+    console.log('Setting up MutationObserver for variant ID inputs:', variantIdInputs);
+    variantIdInputs.forEach(function(input) {
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
+            console.log('Variant ID value changed via MutationObserver:', input.value);
+            updateVariantText(parseInt(input.value));
+          }
+        });
+      });
+      observer.observe(input, { attributes: true, attributeFilter: ['value'] });
+    });
+  }, 200);
 
 </script>
