@@ -208,6 +208,57 @@
         "section_class": "new-big-redesign-ab-test-a"
       }
     },
+    "collection_list_4bGrnB": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_BtL6Ph": {
+          "type": "collection",
+          "settings": {
+            "collection": "neon-collection",
+            "image": "shopify://shop_images/Foto_331465.png",
+            "subheading": "bfb",
+            "title": "dffb",
+            "link_text": "",
+            "link_url": "",
+            "text_color": "rgba(0,0,0,0)",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_BHz7Lw": {
+          "type": "collection",
+          "settings": {
+            "collection": "jess-collection",
+            "subheading": "",
+            "title": "",
+            "link_text": "",
+            "link_url": "",
+            "text_color": "rgba(0,0,0,0)",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "collection_BtL6Ph",
+        "collection_BHz7Lw"
+      ],
+      "custom_css": [
+        ".two-image-container {display: flex; flex-wrap: wrap; gap: 0px; /* Adjust spacing between images if needed */}",
+        ".two-image-container .image-block {flex: 1 1 50%; max-width: 50%; overflow: hidden;}",
+        ".two-image-container .image-block img {width: 100%; height: auto; display: block; object-fit: cover;}",
+        "/* Responsive (mobile: stacked) */@media screen and (max-width: 768px) {.two-image-container .image-block {max-width: 100%; flex: 1 1 100%; }}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "reveal_on_scroll": true,
+        "layout": "collage",
+        "subheading": "Subheading",
+        "title": "Collection list",
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
     "bd_collection_grid_6fcrxk": {
       "type": "bd-collection-grid",
       "blocks": {
@@ -384,6 +435,7 @@
     "featured-collections",
     "featured_collections_BC8mYn",
     "featured_collections_QRc9UU",
+    "collection_list_4bGrnB",
     "bd_collection_grid_6fcrxk",
     "bd_featured_collection_tJ9kr8",
     "bd_featured_collection_mrDAWW",
