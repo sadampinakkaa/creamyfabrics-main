@@ -43,7 +43,7 @@
     "header": {
       "type": "header",
       "custom_css": [
-        "a[href*=\"summer-outlet\"] {color: red !important; font-weight: bold; text-transform: uppercase;}"
+        "/* Make 'Summer Outlet' menu item red */a[href*=\"summer-outlet\"] {color: red !important;}"
       ],
       "settings": {
         "enable_sticky_header": true,
