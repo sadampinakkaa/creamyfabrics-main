@@ -62,22 +62,6 @@
         "section_class": "new-big-redesign-ab-test-a"
       }
     },
-    "bd_hero_xcfK9G": {
-      "type": "bd-hero",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "description": "",
-        "mobile_des_max_width": 0,
-        "button_text": "",
-        "button_link": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0,
-        "section_class": "new-big-redesign-ab-test-b"
-      }
-    },
     "featured_collections_wQAHaW": {
       "type": "featured-collections",
       "blocks": {
@@ -176,238 +160,9 @@
         "section_class": "new-big-redesign-ab-test-a"
       }
     },
-    "featured_collections_BC8mYn": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_bVTjxX": {
-          "type": "collection",
-          "settings": {
-            "collection": "umstandsmode",
-            "label": "",
-            "button_text": "",
-            "button_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_bVTjxX"
-      ],
-      "disabled": true,
-      "settings": {
-        "subheading": "",
-        "title": "",
-        "content": "<h3>Maternity Collection - Open Now</h3>",
-        "hide_ratings": false,
-        "products_count": 50,
-        "products_per_row": 6,
-        "stack_products": false,
-        "show_cta": false,
-        "background": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)",
-        "button_background": "rgba(0,0,0,0)",
-        "button_text_color": "rgba(0,0,0,0)",
-        "section_class": "new-big-redesign-ab-test-a"
-      }
-    },
-    "collection_list_4bGrnB": {
-      "type": "collection-list",
-      "blocks": {
-        "collection_BtL6Ph": {
-          "type": "collection",
-          "settings": {
-            "collection": "neon-collection",
-            "image": "shopify://shop_images/Foto_331465.png",
-            "subheading": "bfb",
-            "title": "dffb",
-            "link_text": "",
-            "link_url": "",
-            "text_color": "rgba(0,0,0,0)",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_BHz7Lw": {
-          "type": "collection",
-          "settings": {
-            "collection": "jess-collection",
-            "subheading": "",
-            "title": "",
-            "link_text": "",
-            "link_url": "",
-            "text_color": "rgba(0,0,0,0)",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "collection_BtL6Ph",
-        "collection_BHz7Lw"
-      ],
-      "custom_css": [
-        ".two-collection-blocks {display: flex; flex-wrap: wrap; gap: 0px;}",
-        ".collection-block {flex: 1 1 50%; max-width: 50%; overflow: hidden; display: block; position: relative; transition: transform 0.3s ease;}",
-        ".collection-block img {width: 100%; height: auto; object-fit: cover; display: block;}",
-        " /* Optional: Hover effect */.collection-block:hover {transform: scale(1.01);}",
-        " /* Responsive (stacked on mobile) */@media screen and (max-width: 768px) {.collection-block {max-width: 100%; flex: 1 1 100%; }}"
-      ],
-      "name": "Collection list",
-      "settings": {
-        "reveal_on_scroll": true,
-        "layout": "collage",
-        "subheading": "Subheading",
-        "title": "Collection list",
-        "background": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)"
-      }
-    },
-    "bd_collection_grid_6fcrxk": {
-      "type": "bd-collection-grid",
-      "blocks": {
-        "block_rRYVGX": {
-          "type": "block",
-          "settings": {
-            "collection": "bhs",
-            "image": "shopify://shop_images/collection-image-01.webp",
-            "image_size": "contain",
-            "title": "BH"
-          }
-        },
-        "block_VEbYYU": {
-          "type": "block",
-          "settings": {
-            "collection": "frontpage",
-            "image": "shopify://shop_images/collection-image-03.webp",
-            "image_size": "contain",
-            "title": "Bodysuit"
-          }
-        },
-        "block_zpQL34": {
-          "type": "block",
-          "settings": {
-            "collection": "kleidung",
-            "image": "shopify://shop_images/7_56f91eea-d263-480c-b58b-8fda07d14c62.jpg",
-            "image_size": "contain",
-            "title": "Bekleidung"
-          }
-        },
-        "block_DhtB6y": {
-          "type": "block",
-          "settings": {
-            "collection": "slips",
-            "image": "shopify://shop_images/dhannuuuussshh.jpg",
-            "image_size": "contain",
-            "title": "Slips"
-          }
-        }
-      },
-      "block_order": [
-        "block_rRYVGX",
-        "block_VEbYYU",
-        "block_zpQL34",
-        "block_DhtB6y"
-      ],
-      "disabled": true,
-      "settings": {
-        "padding_top": 40,
-        "padding_bottom": 0,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 0,
-        "section_class": "new-big-redesign-ab-test-b"
-      }
-    },
-    "bd_featured_collection_tJ9kr8": {
-      "type": "bd-featured-collection",
-      "disabled": true,
-      "settings": {
-        "image_height": 560,
-        "mobile_image_height": 296,
-        "image_top": 50,
-        "mobile_image_top": 50,
-        "collection": "bestseller",
-        "heading": "",
-        "heading_size": "normal",
-        "show_more": "Mehr Ansehen",
-        "description": "",
-        "gap": "normal",
-        "products_count": 8,
-        "products_per_row": 4,
-        "padding_top": 40,
-        "padding_bottom": 0,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 0,
-        "section_class": "new-big-redesign-ab-test-b"
-      }
-    },
-    "bd_featured_collection_mrDAWW": {
-      "type": "bd-featured-collection",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/DSC01784.jpg",
-        "mobile_image": "shopify://shop_images/DSC01784.jpg",
-        "image_height": 560,
-        "mobile_image_height": 296,
-        "image_top": 50,
-        "mobile_image_top": 50,
-        "collection": "neuheiten",
-        "heading": "Neuheiten",
-        "heading_size": "big",
-        "show_more": "",
-        "description": "<p>Entdecke das Neuste von creamy fabrics und entdecke deinen perfekten Fit.</p>",
-        "gap": "big",
-        "products_count": 8,
-        "products_per_row": 4,
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 0,
-        "section_class": "new-big-redesign-ab-test-b"
-      }
-    },
-    "bd_featured_collection_mrDAWZ": {
-      "type": "bd-featured-collection",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/homepage-image-1.webp",
-        "mobile_image": "shopify://shop_images/homepage-image-1.webp",
-        "image_height": 560,
-        "mobile_image_height": 296,
-        "image_top": 30,
-        "mobile_image_top": 50,
-        "collection": "bh-slip",
-        "heading": "Must-Have Bras und Slips",
-        "heading_size": "big",
-        "show_more": "",
-        "description": "<p>Entdecke dein sanftes & angenehmes Tragegefühl. Mit perfektem Support für Po, Bauch & Taille.</p>",
-        "gap": "big",
-        "products_count": 8,
-        "products_per_row": 4,
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 0,
-        "section_class": "new-big-redesign-ab-test-b"
-      }
-    },
-    "bd_image_overlay_M8cdtB": {
-      "type": "bd-image-overlay",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/homepage-image-overlay.webp",
-        "mobile_image": "shopify://shop_images/homepage-image-overlay.webp",
-        "height": 400,
-        "mobile_height": 355,
-        "description": "<p>Jeder fühlt sich wohl in Creamy – für Komfort, Stärke und das gute Gefühl, ganz du selbst zu sein.</p>",
-        "desc_max_width": 300,
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 0,
-        "section_class": "new-big-redesign-ab-test-b"
-      }
-    },
     "24de60e8-8504-4cf3-88d1-052be062e138": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "reveal_on_scroll": true,
         "section_height": "auto",
@@ -428,42 +183,13 @@
         "overlay_opacity": 0,
         "section_class": "new-big-redesign-ab-test-a"
       }
-    },
-    "custom_liquid_bEFdDX": {
-      "type": "custom-liquid",
-      "custom_css": [
-        ".two-collection-blocks {display: flex; flex-wrap: wrap; gap: 0px;}",
-        ".collection-block {flex: 1 1 50%; max-width: 50%; overflow: hidden; display: block; position: relative; transition: transform 0.3s ease;}",
-        ".collection-block img {width: 100%; height: auto; object-fit: cover; display: block;}",
-        " /* Optional: Hover effect */.collection-block:hover {transform: scale(1.01);}",
-        " /* Responsive (stacked on mobile) */@media screen and (max-width: 768px) {.collection-block {max-width: 100%; flex: 1 1 100%; }}"
-      ],
-      "name": "Custom Liquid",
-      "settings": {
-        "subheading": "Your subheading",
-        "title": "Your title",
-        "liquid": "<p style=\"text-align: center\">Write or copy/paste Liquid code</p>",
-        "add_vertical_spacing": true,
-        "background_type": "full_width",
-        "background": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)"
-      }
     }
   },
   "order": [
     "slideshow",
-    "bd_hero_xcfK9G",
     "featured_collections_wQAHaW",
     "featured_collections_QRc9UU",
     "featured-collections",
-    "featured_collections_BC8mYn",
-    "collection_list_4bGrnB",
-    "bd_collection_grid_6fcrxk",
-    "bd_featured_collection_tJ9kr8",
-    "bd_featured_collection_mrDAWW",
-    "bd_featured_collection_mrDAWZ",
-    "bd_image_overlay_M8cdtB",
-    "24de60e8-8504-4cf3-88d1-052be062e138",
-    "custom_liquid_bEFdDX"
+    "24de60e8-8504-4cf3-88d1-052be062e138"
   ]
 }
