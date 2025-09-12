@@ -94,6 +94,13 @@
       "block_order": [
         "collection_gTG7L7"
       ],
+      "custom_css": [
+        ".two-collection-blocks {display: flex; flex-wrap: wrap; gap: 0px;}",
+        ".collection-block {flex: 1 1 50%; max-width: 50%; overflow: hidden; display: block; position: relative; transition: transform 0.3s ease;}",
+        ".collection-block img {width: 100%; height: auto; object-fit: cover; display: block;}",
+        "/* Optional: Hover effect */.collection-block:hover {transform: scale(1.01);}",
+        "/* Responsive (stacked on mobile) */@media screen and (max-width: 768px) {.collection-block {max-width: 100%; flex: 1 1 100%; }}"
+      ],
       "name": "Featured collections",
       "settings": {
         "subheading": "",
@@ -243,12 +250,7 @@
         "collection_BtL6Ph",
         "collection_BHz7Lw"
       ],
-      "custom_css": [
-        ".two-image-container {display: flex; flex-wrap: wrap; gap: 0px; /* Adjust spacing between images if needed */}",
-        ".two-image-container .image-block {flex: 1 1 50%; max-width: 50%; overflow: hidden;}",
-        ".two-image-container .image-block img {width: 100%; height: auto; display: block; object-fit: cover;}",
-        "/* Responsive (mobile: stacked) */@media screen and (max-width: 768px) {.two-image-container .image-block {max-width: 100%; flex: 1 1 100%; }}"
-      ],
+      "custom_css": [],
       "name": "Collection list",
       "settings": {
         "reveal_on_scroll": true,
