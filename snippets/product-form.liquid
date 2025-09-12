@@ -629,7 +629,7 @@
 
               {% comment %} Sale section - appears below color options field {% endcomment %}
               {% if selector_type == 'color' and has_any_sale_variants == true %}
-                <div class="product-form__option-info" style="margin-top: 1rem;">
+                <div class="product-form__option-info" style="margin-top: 1rem; margin-bottom: 1rem;">
                   <span class="product-form__option-name">{{ 'product.general.sale' | t }}</span>
                   <span id="{{ option_id }}-value-sale" class="product-form__option-value product-form__option-value--sale">
                     {% liquid
