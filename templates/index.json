@@ -84,7 +84,7 @@
         "collection_gTG7L7": {
           "type": "collection",
           "settings": {
-            "collection": "neuheiten",
+            "collection": "neon-collection",
             "label": "",
             "button_text": "",
             "button_url": ""
@@ -99,7 +99,7 @@
       "settings": {
         "subheading": "",
         "title": "",
-        "content": "<h3><strong>Unsere  Neuheiten</strong></h3>",
+        "content": "<h3><strong>Neon Collection</strong></h3>",
         "hide_ratings": true,
         "products_count": 34,
         "products_per_row": 4,
@@ -110,6 +110,38 @@
         "button_background": "rgba(0,0,0,0)",
         "button_text_color": "rgba(0,0,0,0)",
         "section_class": ""
+      }
+    },
+    "featured_collections_QRc9UU": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_HVXJVW": {
+          "type": "collection",
+          "settings": {
+            "collection": "jess-collection",
+            "label": "",
+            "button_text": "",
+            "button_url": "shopify://collections/bh-slip"
+          }
+        }
+      },
+      "block_order": [
+        "collection_HVXJVW"
+      ],
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "content": "<h3><strong>Jess Collection</strong></h3>",
+        "hide_ratings": false,
+        "products_count": 50,
+        "products_per_row": 4,
+        "stack_products": false,
+        "show_cta": false,
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "button_background": "rgba(0,0,0,0)",
+        "button_text_color": "rgba(0,0,0,0)",
+        "section_class": "new-big-redesign-ab-test-a"
       }
     },
     "featured-collections": {
@@ -165,38 +197,6 @@
         "subheading": "",
         "title": "",
         "content": "<h3>Maternity Collection - Open Now</h3>",
-        "hide_ratings": false,
-        "products_count": 50,
-        "products_per_row": 6,
-        "stack_products": false,
-        "show_cta": false,
-        "background": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)",
-        "button_background": "rgba(0,0,0,0)",
-        "button_text_color": "rgba(0,0,0,0)",
-        "section_class": "new-big-redesign-ab-test-a"
-      }
-    },
-    "featured_collections_QRc9UU": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_HVXJVW": {
-          "type": "collection",
-          "settings": {
-            "collection": "all-underwear",
-            "label": "",
-            "button_text": "",
-            "button_url": "shopify://collections/bh-slip"
-          }
-        }
-      },
-      "block_order": [
-        "collection_HVXJVW"
-      ],
-      "settings": {
-        "subheading": "",
-        "title": "",
-        "content": "<h3><strong>Must Have Bras & Slips</strong></h3>",
         "hide_ratings": false,
         "products_count": 50,
         "products_per_row": 6,
@@ -454,9 +454,9 @@
     "slideshow",
     "bd_hero_xcfK9G",
     "featured_collections_wQAHaW",
+    "featured_collections_QRc9UU",
     "featured-collections",
     "featured_collections_BC8mYn",
-    "featured_collections_QRc9UU",
     "collection_list_4bGrnB",
     "bd_collection_grid_6fcrxk",
     "bd_featured_collection_tJ9kr8",

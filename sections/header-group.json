@@ -17,7 +17,7 @@
         "cb7914cb-6111-4475-9bec-c27329aabdcd": {
           "type": "message",
           "settings": {
-            "text": "Endless Summer Collection - Now Open",
+            "text": "Neon Collection - Now Open",
             "learn_more_text": "Learn more",
             "title": "",
             "content": "",
@@ -34,7 +34,7 @@
         "announcement_text_size": "small",
         "autoplay": true,
         "cycle_speed": 5,
-        "background": "#ffffff",
+        "background": "#f5f5f5",
         "text_color": "#000000",
         "button_background": "#ffffff",
         "button_text_color": "#282828"
