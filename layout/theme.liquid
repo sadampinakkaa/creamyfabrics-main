@@ -122,6 +122,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.dataset.src=
     {% render 'kiwiSizing' %}
     {% render 'css-variables', direction: direction %}
     {% render 'js-variables', direction: direction %}                                                                                                                                                           {% include 'vital-loader' %} 
+    <script>
+      {%- render 'datora-js' -%}
+    </script>
  
   
   {% render 'vital-scripts' %}

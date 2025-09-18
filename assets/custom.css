@@ -2153,6 +2153,148 @@ body.new-big-redesign-ab-test .product--image-and-size-details .product--size-de
 	display: none;
 }
 
+/* Datora Discount Input Styles */
+.datora-discount-field-container {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.datora-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.datora-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.datora-input .input__field {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.datora-input .input__field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.datora-apply-btn {
+  padding: 0.75rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.datora-apply-btn:hover {
+  background: #0056b3;
+}
+
+.datora-apply-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.datora-discount-error {
+  margin-top: 0.5rem;
+}
+
+.datora-discount-error span {
+  color: #dc3545;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.datora-discount-field-container.error .datora-discount-error span {
+  display: block;
+}
+
+.datora-discount-field-container.loading .datora-apply-btn {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.datora-discount-field-container.done .datora-input .input__field {
+  border-color: #28a745;
+  background-color: #d4edda;
+}
+
+.applied-discounts {
+  margin-top: 0.5rem;
+}
+
+.applied-discount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+}
+
+.applied-discount .discount-code {
+  font-weight: 500;
+  color: #155724;
+}
+
+.remove-discount-btn {
+  background: none;
+  border: none;
+  color: #155724;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 2px;
+}
+
+.remove-discount-btn:hover {
+  background: rgba(21, 87, 36, 0.1);
+}
+
+/* Success discount bar */
+#successDiscountBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #28a745;
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+#successDiscountBar.show {
+  transform: translateY(0);
+}
+
+/* Error states */
+cart-drawer.error .datora-discount-field-container {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+cart-drawer.error .datora-discount-field-container .datora-input .input__field {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
 @media screen and (min-width: 460px) and (max-width: 699px) {
 	.bd-product__media .product__media-item {
 		height: 55rem;

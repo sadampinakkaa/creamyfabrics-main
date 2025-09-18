@@ -411,6 +411,44 @@
         </ul>
       {%- endif -%}
 
+      {%- comment -%} Datora Discount Input {%- endcomment -%}
+      {%- if section.settings.show_datora_discount -%}
+        <div class="datora-discount-field-container" 
+             data-error-empty="{{ section.settings.datora_error_empty | default: 'Please enter a discount code' }}"
+             data-error-double="{{ section.settings.datora_error_double | default: 'Code [[CODE]] is already applied' }}"
+             data-error-failed="{{ section.settings.datora_error_failed | default: 'Code [[CODE]] could not be applied' }}"
+             data-error-invalid="{{ section.settings.datora_error_invalid | default: 'Invalid discount code' }}">
+          
+          <form id="datora-form" class="datora-form">
+            <div class="datora-input">
+              <input type="text" 
+                     name="datora-discount" 
+                     form="datora-form"
+                     placeholder="{{ section.settings.datora_placeholder | default: 'Discount code' }}"
+                     class="input__field"
+                     autocomplete="off">
+              <button type="submit" class="button button--secondary datora-apply-btn">
+                {{ section.settings.datora_button_text | default: 'Apply' }}
+              </button>
+            </div>
+            <div class="datora-discount-error">
+              <span></span>
+            </div>
+          </form>
+          
+          {%- if section.settings.show_datora_applied_discounts -%}
+            <div class="applied-discounts">
+              <div class="applied-discount" style="display: none;">
+                <span class="discount-code"></span>
+                <button type="button" class="remove-discount-btn" onclick="removeDatoraDiscount()">
+                  {%- render 'icon' with 'close' -%}
+                </button>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
 
 
 
@@ -617,6 +655,58 @@
       "type":"text",
       "id":"TopBarGreen",
       "label":"TopBar Green"
+    },
+    {
+      "type": "header",
+      "content": "Datora Discount Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_datora_discount",
+      "label": "Show Datora discount input",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "datora_placeholder",
+      "label": "Discount code placeholder",
+      "default": "Discount code"
+    },
+    {
+      "type": "text",
+      "id": "datora_button_text",
+      "label": "Apply button text",
+      "default": "Apply"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_datora_applied_discounts",
+      "label": "Show applied discounts",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "datora_error_empty",
+      "label": "Empty code error message",
+      "default": "Please enter a discount code"
+    },
+    {
+      "type": "text",
+      "id": "datora_error_double",
+      "label": "Double code error message",
+      "default": "Code [[CODE]] is already applied"
+    },
+    {
+      "type": "text",
+      "id": "datora_error_failed",
+      "label": "Failed code error message",
+      "default": "Code [[CODE]] could not be applied"
+    },
+    {
+      "type": "text",
+      "id": "datora_error_invalid",
+      "label": "Invalid code error message",
+      "default": "Invalid discount code"
     }
   ],
    "blocks":[
