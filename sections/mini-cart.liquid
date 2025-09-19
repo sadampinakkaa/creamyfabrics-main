@@ -397,7 +397,58 @@
 
     <footer class="mini-cart__drawer-footer drawer__footer drawer__footer--tight drawer__footer--bordered">
       {%- capture shipping_tax_note -%}{{ 'cart.general.shipping_tax_note' | t }}{%- endcapture -%}
-
+        {%- if section.settings.datora_input_show -%}
+          <div class="datora-discount-field-container" 
+          data-error-empty="{{ section.settings.datora_error_empty }}" 
+          data-error-double="{{ section.settings.datora_error_double }}" 
+          data-error-failed="{{ section.settings.datora_error_failed }}" 
+          data-error-invalid="{{ section.settings.datora_error_invalid }}">
+            <span class="datora-discount-error" 
+              style="--edb-bg:{{ section.settings.discount_color_bg | default:'#f8d7da' }};
+              --edb-text:{{ section.settings.discount_color_text | default:'#721c24' }};
+              --edb-border:{{ section.settings.discount_color_text | color_modify: 'alpha', 0.1 }};">
+              <span></span>
+              <button 
+                type="button" 
+                class="datora-discount-error-close" 
+                title="{{ 'general.accessibility.close' | t | escape }}"
+                onclick="errorDatoraDiscount('hide');">
+                {%- render 'icon' with 'close' -%}
+              </button>
+            </span>
+            <div class="datora-discount-field-input">
+              <div class="input datora-input">
+                <input 
+                  type="text" 
+                  name="datora-discount" 
+                  id="datora-discount-input" 
+                  class="input__field input__field--text"
+                  pattern="[a-zA-Z0-9]*"
+                  oninput="errorDatoraDiscount('hide');">
+                  <label for="datora-discount" class="input__label">{{ 'shopify.checkout.order_summary.discount_label' | t }}</label>
+                  </div>
+                  <button type="button" is="loader-button" onclick="applyDatoraDiscount()" class="datora-submit button button--primary">{{ 'shopify.checkout.general.submit' | t }}</button>
+                </div>
+                {%- if cart.cart_level_discount_applications != blank -%}
+                  <div class="applied-discounts-wrapper">
+                    {% for discount in cart.discount_applications limit:1 %}
+                      {% assign discount_code = discount.title | split: ' ' | first %}
+                      <div class="applied-discount">
+                        {{ discount_code }}
+                        <button 
+                          type="button" 
+                          class="remove-discount" 
+                          data-discount-code="{{ discount_code }}"
+                          onclick="removeDatoraDiscount()"
+                        >
+                          {%- render 'icon' with 'close' -%}
+                        </button>
+                      </div>
+                    {% endfor %}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
       {%- if cart.cart_level_discount_applications != blank -%}
         <ul class="mini-cart__discount-list list--unstyled" role="list">
           {%- for discount_application in cart.cart_level_discount_applications -%}
