@@ -138,7 +138,7 @@
           data-datora-compare="{{ product.selected_or_first_available_variant.compare_at_price }}">
             <div class="price-list" data-product-price-list>
               {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-                <span class="price price--highlight">
+                <span class="price price--highlight" data-datora-classes="price price--highlight">
                   <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
 
                   {%- if settings.currency_code_enabled -%}
@@ -148,7 +148,7 @@
                   {%- endif -%}
                 </span>
 
-                <span class="price price--compare">
+                <span class="price price--compare" data-datora-classes="price price--compare">
                   <span class="visually-hidden">{{ 'product.general.regular_price' | t }}</span>
 
                   {%- if settings.currency_code_enabled -%}
@@ -158,7 +158,7 @@
                   {%- endif -%}
                 </span>
               {%- else -%}
-                <span class="price">
+              <span class="price" data-datora-classes="price price--highlight">
                   <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
 
                   {%- if settings.currency_code_enabled -%}
