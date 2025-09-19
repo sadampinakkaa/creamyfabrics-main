@@ -130,17 +130,17 @@
           "home": false
         }
       },
+      "14135111727648716233": {
+        "type": "shopify://apps/datora-multi-discounts/blocks/datora-multi-discounts/0868cd08-d64b-42c3-a966-1c794fdcf58d",
+        "disabled": false,
+        "settings": {}
+      },
       "759513785179295412": {
         "type": "shopify://apps/datora-multi-discounts/blocks/storefront-api-client/0868cd08-d64b-42c3-a966-1c794fdcf58d",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "storefront_api_token": ""
         }
-      },
-      "14135111727648716233": {
-        "type": "shopify://apps/datora-multi-discounts/blocks/datora-multi-discounts/0868cd08-d64b-42c3-a966-1c794fdcf58d",
-        "disabled": true,
-        "settings": {}
       }
     }
   },
