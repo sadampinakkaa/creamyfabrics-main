@@ -4943,8 +4943,13 @@ var ProductMeta = class extends HTMLElement
   }
    _updateData(variant)
   {
-    const productDataElm = this.querySelector('[data-datora-pid]');
-    console.log(productDataElm , "event tiggerd")
+   
+    try {
+       let productDataElm = this.querySelector('[data-datora-pid]');
+    } catch (error) {
+      console.log(error,"gughvwwfbhfeubesfubesbuifuesfuiesubifesbuesvbuksbevuevesuoeuofouafwbobwaibuofwobu")
+    }
+    console.log(productDataElm , "event tiggerdhvyykfugyuggugulkvuyktjdtjdtsjdyfukfulflgli3556844946646116161166116161616uigyugguugugkguyfyfy")
     productDataElm.setAttribute('data-datora-vid', variant.id);
     productDataElm.setAttribute('data-datora-price', variant.price);
     productDataElm.setAttribute('data-datora-compare', variant.compare_at_price);
