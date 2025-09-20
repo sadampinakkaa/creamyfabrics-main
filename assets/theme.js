@@ -4928,7 +4928,6 @@ var ProductMeta = class extends HTMLElement
   connectedCallback()
   {
     document.getElementById(this.getAttribute("form-id"))?.addEventListener("variant:changed", this._onVariantChanged.bind(this))
-     
   }
   get priceClass()
   {
@@ -4941,7 +4940,6 @@ var ProductMeta = class extends HTMLElement
   _onVariantChanged(event)
   {
     this._updateLabels(event.detail.variant), this._updatePrices(event.detail.variant), this._updateSku(event.detail.variant)
-    _updateData(event.detail.variant)
   }
    _updateData(variant)
   {
