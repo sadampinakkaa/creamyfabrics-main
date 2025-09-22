@@ -139,7 +139,7 @@
         "type": "shopify://apps/datora-multi-discounts/blocks/storefront-api-client/0868cd08-d64b-42c3-a966-1c794fdcf58d",
         "disabled": false,
         "settings": {
-          "storefront_api_token": ""
+          "storefront_api_token": "dfec22a212722e419242faa9bdf69c64"
         }
       }
     }
