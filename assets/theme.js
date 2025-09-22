@@ -4976,23 +4976,38 @@ var ProductMeta = class extends HTMLElement
       if (!variant) productPrices.style.display = "none";
       else
       {
-        if (productPrices.innerHTML = "", variant.compare_at_price > variant.price ? (productPrices.innerHTML += `<span class="price price--highlight ${this.priceClass}"><span class="visually-hidden">${window.themeVariables.strings.productSalePrice}</span>${formatMoney(variant.price,currencyFormat)}</span>`, productPrices.innerHTML += `<span class="price price--compare"><span class="visually-hidden">${window.themeVariables.strings.productRegularPrice}</span>${formatMoney(variant.compare_at_price,currencyFormat)}</span>`) : productPrices.innerHTML += `<span class="price ${this.priceClass}"><span class="visually-hidden">${window.themeVariables.strings.productSalePrice}</span>${formatMoney(variant.price,currencyFormat)}</span>`, variant.unit_price_measurement)
-        {
-          let referenceValue = "";
-          variant.unit_price_measurement.reference_value !== 1 && (referenceValue = `<span class="unit-price-measurement__reference-value">${variant.unit_price_measurement.reference_value}</span>`), productPrices.innerHTML += `
-          <div class="price text--subdued ${this.unitPriceClass}">
-            <div class="unit-price-measurement">
-              <span class="unit-price-measurement__price">${formatMoney(variant.unit_price)}</span>
-              <span class="unit-price-measurement__separator">/</span>
-              ${referenceValue}
-              <span class="unit-price-measurement__reference-unit">${variant.unit_price_measurement.reference_unit}</span>
-            </div>
-          </div>
-        `
+        productPrices.innerHTML = "";
+        if (variant.compare_at_price > variant.price) {
+            productPrices.innerHTML += `
+                <span class="price price--highlight ${this.priceClass}" data-datora-classes="price price--highlight">
+                    <span class="visually-hidden">
+                        ${window.themeVariables.strings.productSalePrice}
+                    </span>
+                    ${formatMoney(variant.price, currencyFormat)}
+                </span>`;
+            productPrices.innerHTML += `
+                <span class="price price--compare" data-datora-classes="price price--compare">
+                    <span class="visually-hidden">
+                        ${window.themeVariables.strings.productRegularPrice}
+                    </span>
+                    <span>${formatMoney(variant.compare_at_price, currencyFormat)}</span>
+                </span>`;
+        } else {
+            productPrices.innerHTML += `
+                <span class="price ${this.priceClass}" data-datora-classes="price price--highlight">
+                    <span class="visually-hidden">
+                        ${window.themeVariables.strings.productSalePrice}
+                    </span>
+                    ${formatMoney(variant.price, currencyFormat)}
+                </span>`;
+            productPrices.innerHTML += `
+                <span class="hidden" data-datora-classes="price price--compare">
+                    <span class="visually-hidden">
+                        ${window.themeVariables.strings.productRegularPrice}
+                    </span>
+                    <span></span>
+                </span>`;
         }
-        productPrices.style.display = ""
-      }
-  }
   _updateSku(variant)
   {
     let productSku = this.querySelector("[data-product-sku-container]");
