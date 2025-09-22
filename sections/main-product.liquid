@@ -999,9 +999,24 @@ if (document.readyState === 'loading') {
     addDiscountCodeToBadges();
 }
 
-
+// Alternative: If you want to modify the HTML template directly
+// Replace your current HTML with:
+/*
+<li class="datora discount-badge dd" style="display: none;">
+    {%- render 'icon' with 'discount-badge' -%}
+    <span data-datora class="discount-code"></span>
+</li>
 
 <script>
+    const discountCode = hbBetCookie('discount_code');
+    if (discountCode) {
+        document.querySelector('.discount-code').textContent = discountCode;
+        document.querySelector('.discount-badge').style.display = 'block';
+    }
+</script>
+*/
+
+
 
 function handleEvent(event) {
     const selectedVariantId = this.value;
