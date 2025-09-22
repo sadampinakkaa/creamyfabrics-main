@@ -833,7 +833,7 @@ var updateProductMedia = (variantId) => {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-	
+	console.log("datora installed .................................")
 window.co2CheckApply = window.co2CheckReverse = window.co2ErrorAlert = false;
 window.datoraErrors = {};
 let co2Initialized = false;
