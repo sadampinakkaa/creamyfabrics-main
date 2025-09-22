@@ -963,7 +963,61 @@
 </div>
 
 <script>
-  
+  // Function to get cookie value
+function hbBetCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+// Get discount code from cookie
+const getDiscountCode = hbBetCookie('discount_code');
+
+// Function to add discount code to all badges
+function addDiscountCodeToBadges() {
+    // Find all discount badges
+    const discountBadges = document.querySelectorAll('.discount-badge');
+    
+    discountBadges.forEach(badge => {
+        // Find the span with data-datora attribute
+        const discountSpan = badge.querySelector('span[data-datora]');
+        
+        if (discountSpan && getDiscountCode) {
+            // Add the discount code to the span
+            discountSpan.textContent = getDiscountCode;
+            
+            // Show the badge if it was hidden
+            badge.hidden = false;
+        }
+    });
+}
+
+// Call the function when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addDiscountCodeToBadges);
+} else {
+    addDiscountCodeToBadges();
+}
+
+// Alternative: If you want to modify the HTML template directly
+// Replace your current HTML with:
+/*
+<li class="datora discount-badge dd" style="display: none;">
+    {%- render 'icon' with 'discount-badge' -%}
+    <span data-datora class="discount-code"></span>
+</li>
+
+<script>
+    const discountCode = hbBetCookie('discount_code');
+    if (discountCode) {
+        document.querySelector('.discount-code').textContent = discountCode;
+        document.querySelector('.discount-badge').style.display = 'block';
+    }
+</script>
+*/
+
+
+
 function handleEvent(event) {
     const selectedVariantId = this.value;
     const dupProductElement = document.querySelector(`.DuplicatedProduct--Custom[data-variant-id="${selectedVariantId}"]`);
