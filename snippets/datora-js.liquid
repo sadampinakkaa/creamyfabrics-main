@@ -43,6 +43,7 @@ const applyDatoraDiscount = async function() {
       return;
     }
     const resultChangeDiscountCode = await co2.setDiscountCode(discountCode);
+    console.log(resultChangeDiscountCode)
     if(resultChangeDiscountCode){
       const cleanCode = discountCode.trim().toUpperCase();
       sessionStorage.setItem("lastDiscountCode",cleanCode);
