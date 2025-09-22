@@ -963,17 +963,17 @@
 </div>
 
 <script>
-  // Function to get cookie value
+ 
 function hbBetCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-// Get discount code from cookie
+
 const getDiscountCode = hbBetCookie('discount_code');
 
-// Function to add discount code to all badges
+
 function addDiscountCodeToBadges() {
     // Find all discount badges
     const discountBadges = document.querySelectorAll('.discount-badge');
@@ -999,22 +999,7 @@ if (document.readyState === 'loading') {
     addDiscountCodeToBadges();
 }
 
-// Alternative: If you want to modify the HTML template directly
-// Replace your current HTML with:
-/*
-<li class="datora discount-badge dd" style="display: none;">
-    {%- render 'icon' with 'discount-badge' -%}
-    <span data-datora class="discount-code"></span>
-</li>
 
-<script>
-    const discountCode = hbBetCookie('discount_code');
-    if (discountCode) {
-        document.querySelector('.discount-code').textContent = discountCode;
-        document.querySelector('.discount-badge').style.display = 'block';
-    }
-</script>
-*/
 
 
 
