@@ -37,10 +37,35 @@
       {%- endif -%}
     }
   }
+  #successDiscountBar{
+    position: absolute !important;
+    inset: 0 !important;
+    background:var(--sdb-bg);
+    color:var(--sdb-text);
+    transform:translateY(-100%);
+    transition:0.75s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height: normal;
+    gap:5px;
+    border-bottom:1px var(--sdb-border) solid;
+  }
+  #successDiscountBar.show{
+    transform:translateY(0%);
+  }
 </style>
 
 {%- if section.blocks.size > 0 -%}
   <section>
+    {%- case section.settings.announcement_text_size -%}
+      {%- when 'small' -%}
+        {%- assign text_size_class = 'text--xsmall' -%}
+      {%- when 'normal' -%}
+        {%- assign text_size_class = 'text--small' -%}
+      {%- when 'large' -%}
+        {%- assign text_size_class = '' -%}
+    {%- endcase -%}
     <announcement-bar {% if section.blocks.size > 1 and section.settings.autoplay %}auto-play cycle-speed="{{ section.settings.cycle_speed | escape }}"{% endif %} class="announcement-bar {% if section.blocks.size > 1 %}announcement-bar--multiple{% endif %}">
       {%- if section.blocks.size > 1 -%}
         <button data-action="prev" class="tap-area tap-area--large">
@@ -58,14 +83,7 @@
           {%- endif -%}
 
           <announcement-bar-item {% unless forloop.first %}hidden{% endunless %} {% if has_extra_content %}has-content{% endif %} class="announcement-bar__item" {{ block.shopify_attributes }}>
-            {%- case section.settings.announcement_text_size -%}
-              {%- when 'small' -%}
-                {%- assign text_size_class = 'text--xsmall' -%}
-              {%- when 'normal' -%}
-                {%- assign text_size_class = 'text--small' -%}
-              {%- when 'large' -%}
-                {%- assign text_size_class = '' -%}
-            {%- endcase -%}
+            
 
             <div class="announcement-bar__message {{ text_size_class }}">
               {%- if block.settings.content != blank or block.settings.image != blank -%}
@@ -130,8 +148,30 @@
           {% render 'icon' with 'nav-arrow-right-small', direction_aware: true %}
         </button>
       {%- endif -%}
+      
     </announcement-bar>
-    
+    {%- if section.settings.discount_show != blank -%}
+      <div id="successDiscountBar" class="{{ text_size_class }}" 
+        style="--sdb-bg:{{ section.settings.discount_color_bg | default:'#080' }};
+        --sdb-text:{{ section.settings.discount_color_text | default:'#FFF' }};
+        --sdb-border:{{ section.settings.discount_color_text | color_modify: 'alpha', 0.5 }};">
+        <svg
+            height="14px"
+            width="14px"
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 310.277 310.277"
+            xml:space="preserve"
+            fill="currentColor"
+            stroke="currentColor"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path style="fill:##007600;" d="M155.139,0C69.598,0,0,69.598,0,155.139c0,85.547,69.598,155.139,155.139,155.139 c85.547,0,155.139-69.592,155.139-155.139C310.277,69.598,240.686,0,155.139,0z M144.177,196.567L90.571,142.96l8.437-8.437 l45.169,45.169l81.34-81.34l8.437,8.437L144.177,196.567z"></path> </g> </g>
+          </svg>
+        <span data-text="{{ section.settings.discount_text | default:'Code [[CODE]] activated!' }}"></span>
+      </div>
+    {%- endif -%}
   </section>
 
   <script>
@@ -283,6 +323,39 @@
       "id": "button_text_color",
       "label": "Button text",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Datora | Discount SuccessBar",
+      "info": "Success message when entering the shop with a new discount code (discount link). Part of [Datora | Multi Discounts](https:\/\/apps.shopify.com\/datora-multi-discounts)"
+    },
+    {
+      "type": "checkbox",
+      "id": "discount_show",
+      "label": "Enable SuccessBar",
+      "default": false
+    },
+    {
+      "visible_if": "{{ section.settings.discount_show }}",
+      "type": "color",
+      "id": "discount_color_bg",
+      "label": "Background",
+      "default": "#f2fdf2"
+    },
+    {
+      "visible_if": "{{ section.settings.discount_show }}",
+      "type": "color",
+      "id": "discount_color_text",
+      "label": "Text",
+      "default": "#007600"
+    },
+    {
+      "visible_if": "{{ section.settings.discount_show }}",
+      "type": "textarea",
+      "id": "discount_text",
+      "label": "Success message",
+      "default": "Der Code <b>[[CODE]]</b> wurde erfolgreich aktiviert!",
+      "info": "[[CODE]] in the text will be replaced by the current discount code."
     }
   ],
   "default": {
