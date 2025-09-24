@@ -34,6 +34,7 @@
       "block_order": [
         "image_eCUaam"
       ],
+      "disabled": true,
       "settings": {
         "section_height": "auto",
         "transition_type": "sweep",
