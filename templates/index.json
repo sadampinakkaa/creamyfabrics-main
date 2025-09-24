@@ -15,12 +15,12 @@
         "image_ptW7DJ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Design_ohne_Titel_1_6b97c37e-c359-4d67-9c19-649b38199461.jpg",
+            "image": "shopify://shop_images/CMD_1_NudeCollection_comingsoon.jpg",
             "text_position": "top_center",
             "subheading": "",
             "title": "",
             "button_1_text": "",
-            "button_1_link": "shopify://collections/neon-collection",
+            "button_1_link": "",
             "button_2_text": "",
             "button_2_link": "",
             "text_color": "#282828",
@@ -29,29 +29,10 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
-        },
-        "image_3KTMQD": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/CFxJessBlog_Banner_1_fce67612-0db4-44ed-b45d-d21c8c4ee6fe.png",
-            "text_position": "middle_center",
-            "subheading": "",
-            "title": "",
-            "button_1_text": "",
-            "button_1_link": "shopify://collections/jess-collection",
-            "button_2_text": "",
-            "button_2_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
         }
       },
       "block_order": [
-        "image_ptW7DJ",
-        "image_3KTMQD"
+        "image_ptW7DJ"
       ],
       "settings": {
         "section_height": "auto",
@@ -59,6 +40,38 @@
         "autoplay": true,
         "cycle_speed": 7,
         "background": "rgba(0,0,0,0)",
+        "section_class": "new-big-redesign-ab-test-a"
+      }
+    },
+    "featured-collections": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestseller",
+            "label": "",
+            "button_text": "",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection-1"
+      ],
+      "settings": {
+        "subheading": "",
+        "title": "",
+        "content": "<h3><strong>Unsere Bestseller</strong></h3>",
+        "hide_ratings": true,
+        "products_count": 34,
+        "products_per_row": 4,
+        "stack_products": false,
+        "show_cta": false,
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "button_background": "#f9ca4f",
+        "button_text_color": "rgba(0,0,0,0)",
         "section_class": "new-big-redesign-ab-test-a"
       }
     },
@@ -102,7 +115,7 @@
         "collection_HVXJVW": {
           "type": "collection",
           "settings": {
-            "collection": "jess-collection",
+            "collection": "bhs",
             "label": "",
             "button_text": "",
             "button_url": "shopify://collections/bh-slip"
@@ -115,7 +128,7 @@
       "settings": {
         "subheading": "",
         "title": "",
-        "content": "<h3><strong>Jess Collection</strong></h3>",
+        "content": "<h3><strong>Deine Must-have BH's</strong></h3>",
         "hide_ratings": false,
         "products_count": 50,
         "products_per_row": 4,
@@ -125,39 +138,7 @@
         "text_color": "rgba(0,0,0,0)",
         "button_background": "rgba(0,0,0,0)",
         "button_text_color": "rgba(0,0,0,0)",
-        "section_class": "new-big-redesign-ab-test-a"
-      }
-    },
-    "featured-collections": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": "bestseller",
-            "label": "",
-            "button_text": "",
-            "button_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-1"
-      ],
-      "settings": {
-        "subheading": "",
-        "title": "",
-        "content": "<h3><strong>Unsere Bestseller</strong></h3>",
-        "hide_ratings": true,
-        "products_count": 34,
-        "products_per_row": 4,
-        "stack_products": false,
-        "show_cta": false,
-        "background": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)",
-        "button_background": "#f9ca4f",
-        "button_text_color": "rgba(0,0,0,0)",
-        "section_class": "new-big-redesign-ab-test-a"
+        "section_class": ""
       }
     },
     "24de60e8-8504-4cf3-88d1-052be062e138": {
@@ -187,9 +168,9 @@
   },
   "order": [
     "slideshow",
+    "featured-collections",
     "featured_collections_wQAHaW",
     "featured_collections_QRc9UU",
-    "featured-collections",
     "24de60e8-8504-4cf3-88d1-052be062e138"
   ]
 }
