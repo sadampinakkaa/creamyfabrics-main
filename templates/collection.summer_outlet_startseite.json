@@ -23,19 +23,19 @@
       "type": "rich-text",
       "settings": {
         "subheading": "",
-        "title": "Summer Outlet",
-        "content": "<p>Alle Sommerfarben jetzt 30% günstiger – nur solange der Vorrat reicht!</p>",
+        "title": "LETZTE CHANCE",
+        "content": "<p>Es gibt <strong>JETZT</strong> bis zu <strong>50%</strong> <strong>Rabatt</strong> auf alle <strong>Sommerfarben</strong> – nur solange der Vorrat reicht. </p>",
         "button_text": "",
         "button_link": "",
         "background_type": "full_width",
-        "text_width": "small",
+        "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
         "background": "rgba(0,0,0,0)",
         "text_color": "rgba(0,0,0,0)",
         "button_background": "rgba(0,0,0,0)",
         "button_text_color": "rgba(0,0,0,0)",
-        "section_class": "new-big-redesign-ab-test-a"
+        "section_class": ""
       }
     },
     "main": {
