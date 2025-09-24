@@ -506,19 +506,6 @@
           <strong style="float: right;">{{ cart.total_price | money }}</strong>
         </div>
       </div>
-            <span>Ersparnis</span>
-            <strong style="float: right;">
-              -{{ savings | money }}
-            </strong>
-          </div>          
-          
-        {% endif %}
-
-        <div>
-          <span>{{ 'customer.orders.total' | t }}</span>
-          <strong style="float: right;">{{ cart.total_price | money }}</strong>
-        </div>
-      </div>
 
        {%- if section.settings.show_checkout_button -%}
         <button
@@ -542,19 +529,6 @@
         </a>
       {%- endif -%}
       
-      {%- if section.settings.datora_payment -%}
-        <div class="datora-payments">
-          <ul>
-            {% assign payment_types = section.settings.payment_icons | newline_to_br | split: '<br />' %}
-            {%- for type in payment_types -%}
-              {% assign clean_type = type | url_encode | escape | replace:'%0A','' | replace:'-','_' | strip %}
-              <li data-payment="{{- clean_type -}}">
-                {{- clean_type| payment_type_svg_tag: class: 'icon icon--full-color' -}}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {%- endif -%}
 
       <div class="mini-cart__payment-icons new-big-redesign-ab-test-b">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="20" viewBox="0 0 32 20" fill="none">
@@ -701,62 +675,6 @@
       "type":"text",
       "id":"TopBarGreen",
       "label":"TopBar Green"
-    },
-    {
-      "type": "header",
-      "content": "Datora | Discount CodeInput",
-      "info": "Section in the cart where you can enter or change a discount code. Part of [Datora | Multi Discounts](https://apps.shopify.com/datora-multi-discounts)"
-    },
-    {
-      "type": "checkbox",
-      "id": "datora_input_show",
-      "label": "Enable CodeInput",
-      "default": false
-    },
-    {
-      "visible_if": "{{ section.settings.datora_input_show }}",
-      "type": "color",
-      "id": "discount_color_bg",
-      "label": "Background",
-      "default": "#f8d7da"
-    },
-    {
-      "visible_if": "{{ section.settings.datora_input_show }}",
-      "type": "color",
-      "id": "discount_color_text",
-      "label": "Text",
-      "default": "#721c24"
-    },
-    {
-      "visible_if": "{{ section.settings.datora_input_show }}",
-      "type":"text",
-      "id":"datora_error_empty",
-      "label":"Error | empty",
-      "default": "Please enter a code!"
-    },
-    {
-      "visible_if": "{{ section.settings.datora_input_show }}",
-      "type":"text",
-      "id":"datora_error_double",
-      "label":"Error | double",
-      "default": "Code <b>[[CODE]]</b> is already active!",
-      "info": "[[CODE]] replaced by current discount code."
-    },
-    {
-      "visible_if": "{{ section.settings.datora_input_show }}",
-      "type":"text",
-      "id":"datora_error_failed",
-      "label":"Error | failed",
-      "default": "Code <b>[[CODE]]</b> is invalid!",
-      "info": "[[CODE]] replaced by current discount code."
-    },
-    {
-      "visible_if": "{{ section.settings.datora_input_show }}",
-      "type":"text",
-      "id":"datora_error_invalid",
-      "label":"Error | invalid",
-      "default": "Code <b>[[CODE]]</b> does not exist!",
-      "info": "[[CODE]] replaced by current discount code."
     }
   ],
   "blocks":[
