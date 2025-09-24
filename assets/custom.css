@@ -2122,24 +2122,6 @@ body.new-big-redesign-ab-test .predictive-search.drawer .drawer__header {
 body.new-big-redesign-ab-test .predictive-search__input {
 	font-size: 1.4rem;
 }
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-cart-item .docapp-left,
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-cart-item .docapp-right,
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--bean-container .docapp-coupon-input--bean-container--bean {
-	font-size: 1.2rem !important;
-}
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--bean-container .docapp-coupon-input--bean-container--bean svg {
-	height: 1.2rem !important;
-}
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--input {
-	font-size: 1.2rem !important;
-}
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--input-container .docapp-coupon-input--button,
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--input-container .docapp-coupon-input--button-text {
-	font-size: 1.2rem !important;
-}
-body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-cart-item {
-	margin-bottom: 0.4rem;
-}
 body.new-big-redesign-ab-test .product--image-and-size-details .product--image-description,
 body.new-big-redesign-ab-test .product--image-and-size-details .product--size-details {
 	border-color: #E8E5E2;
@@ -2324,23 +2306,10 @@ body.new-big-redesign-ab-test .product--image-and-size-details .product--size-de
 	body.new-big-redesign-ab-test .mini-cart.drawer .drawer__content .line-item__remove-button {
 		font-size: 1.2rem;
 	}
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-cart-item .docapp-left,
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-cart-item .docapp-right,
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--bean-container .docapp-coupon-input--bean-container--bean {
-		font-size: 1.4rem !important;
-	}
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-cart-item {
-		margin-bottom: 0.8rem;
-	}
 	body.new-big-redesign-ab-test .mini-cart.drawer .drawer__footer .DrawerShippingAnnoucement--head {
 		font-size: 1.4rem;
 	}
 	body.new-big-redesign-ab-test .mini-cart.drawer .drawer__footer .DrawerShippingAnnoucement--Content {
-		font-size: 1.4rem;
-	}
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--input,
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--input-container .docapp-coupon-input--button,
-	body.new-big-redesign-ab-test .docapp-cart-with-coupon-summary .docapp-coupon-input--input-container .docapp-coupon-input--button-text {
 		font-size: 1.4rem;
 	}
 	.desktop-product-media {
