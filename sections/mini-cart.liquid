@@ -275,17 +275,10 @@
                   </div>
                 </div>
 
-                {%- if line_item.line_level_discount_allocations != blank -%}
-                  <ul class="line-item__discount-list list--unstyled" role="list">
-                    {%- for discount_allocation in line_item.line_level_discount_allocations -%}
-                      {% if discount_allocation.amount > 0 %}
-                        <li class="line-item__discount-badge discount-badge">
-                          {%- render 'icon' with 'discount-badge' -%}{{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
-                        </li>
-                      {% endif %}
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
+                {%- comment -%}
+                  Line-level discount badges are intentionally hidden to avoid duplicate discount rows.
+                  Discounts are now grouped and displayed once per code in the footer.
+                {%- endcomment -%}
 
                 {%- assign max_allowed_quantity = '' -%}
                 {%- assign allow_more = true -%}
@@ -449,15 +442,57 @@
                 {%- endif -%}
               </div>
             {%- endif -%}
-      {%- if cart.cart_level_discount_applications != blank -%}
+      {%- comment -%}
+        Group all discounts (cart-level and line-level) by discount code and display one row per code
+      {%- endcomment -%}
+      {%- assign all_codes = '' -%}
+      {%- for discount_application in cart.cart_level_discount_applications -%}
+        {%- assign code = discount_application.title | split: ' ' | first -%}
+        {%- unless all_codes contains code | append: ',' -%}
+          {%- assign all_codes = all_codes | append: code | append: ',' -%}
+        {%- endunless -%}
+      {%- endfor -%}
+      {%- for line_item in cart.items -%}
+        {%- if line_item.line_level_discount_allocations != blank -%}
+          {%- for allocation in line_item.line_level_discount_allocations -%}
+            {%- assign code = allocation.discount_application.title | split: ' ' | first -%}
+            {%- unless all_codes contains code | append: ',' -%}
+              {%- assign all_codes = all_codes | append: code | append: ',' -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- assign codes_array = all_codes | split: ',' -%}
+      {%- if codes_array.size > 0 -%}
         <ul class="mini-cart__discount-list list--unstyled" role="list">
-          {%- for discount_application in cart.cart_level_discount_applications -%}
-            {% if discount_application.total_allocated_amount > 0 %}
-              <li class="mini-cart__discount">
-                <span class="mini-cart__discount-badge discount-badge">{%- render 'icon' with 'discount-badge' -%}{{ discount_application.title }}</span>
-                <span class="mini-cart__discount-price text--xsmall text--subdued">-{{ discount_application.total_allocated_amount | money }}</span>
-              </li>
-            {% endif %}
+          {%- for code in codes_array -%}
+            {%- if code != '' -%}
+              {%- assign code_total = 0 -%}
+              {%- for discount_application in cart.cart_level_discount_applications -%}
+                {%- assign app_code = discount_application.title | split: ' ' | first -%}
+                {%- if app_code == code -%}
+                  {%- assign code_total = code_total | plus: discount_application.total_allocated_amount -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- for line_item in cart.items -%}
+                {%- if line_item.line_level_discount_allocations != blank -%}
+                  {%- for allocation in line_item.line_level_discount_allocations -%}
+                    {%- assign alloc_code = allocation.discount_application.title | split: ' ' | first -%}
+                    {%- if alloc_code == code -%}
+                      {%- assign code_total = code_total | plus: allocation.amount -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- if code_total > 0 -%}
+                <li class="mini-cart__discount">
+                  <span class="mini-cart__discount-badge discount-badge">{%- render 'icon' with 'discount-badge' -%}{{ code }}</span>
+                  <span class="mini-cart__discount-price text--xsmall text--subdued">-{{ code_total | money }}</span>
+                </li>
+              {%- endif -%}
+            {%- endif -%}
           {%- endfor -%}
         </ul>
       {%- endif -%}
