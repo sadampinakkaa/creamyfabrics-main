@@ -123,13 +123,6 @@
         "disabled": false,
         "settings": {}
       },
-      "1530068250781986104": {
-        "type": "shopify://apps/fbp-fast-bundle/blocks/fast_bundle/9e87fbe2-9041-4c23-acf5-322413994cef",
-        "disabled": true,
-        "settings": {
-          "home": false
-        }
-      },
       "14135111727648716233": {
         "type": "shopify://apps/datora-multi-discounts/blocks/datora-multi-discounts/0868cd08-d64b-42c3-a966-1c794fdcf58d",
         "disabled": false,
