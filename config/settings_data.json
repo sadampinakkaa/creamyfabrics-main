@@ -97,7 +97,7 @@
           "show_free_custom": "Custom text",
           "datora_payments": false,
           "payment_icons": "paypal\nshopify_pay\nklarna\ngoogle_pay\napple_pay\nmaster\nvisa",
-          "datora_input_show": false,
+          "datora_input_show": true,
           "discount_color_bg": "#f8d7da",
           "discount_color_text": "#721c24",
           "datora_error_empty": "Trage bitte einen Code ein!",
