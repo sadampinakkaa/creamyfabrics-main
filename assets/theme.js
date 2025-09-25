@@ -5409,13 +5409,27 @@ var CartDrawer = class extends DrawerContent
   {
     super.connectedCallback(), this.nextReplacementDelay = 0, this.rootDelegate.on("cart:refresh", this._rerenderCart.bind(this)), this.addEventListener("variant:added", () => this.nextReplacementDelay = 600)
   }
-  async _rerenderCart(event)
+   async _rerenderCart(event)
   {
     let cartContent = null,
       html = "";
+    
     event.detail && event.detail.cart && event.detail.cart.sections ? (cartContent = event.detail.cart, html = event.detail.cart.sections["mini-cart"]) : html = await (await fetch(`${window.themeVariables.routes.cartUrl}?section_id=${this.getAttribute("section")}`)).text();
     const fakeDiv = document.createElement("div");
-    fakeDiv.innerHTML = html, setTimeout(async () =>
+    fakeDiv.innerHTML = html;
+    const currentCartDrawer = document.querySelector('cart-drawer');
+    const appliedDiscounts = fakeDiv.querySelectorAll('.applied-discount');
+    const co2CheckApply = ('co2CheckApply' in window) ? window.co2CheckApply : false;
+    const co2CheckReverse = ('co2CheckReverse' in window) ? window.co2CheckReverse : false;
+    const co2ErrorAlert = ('co2ErrorAlert' in window) ? window.co2ErrorAlert : false;
+    //console.log("appliedDiscounts", appliedDiscounts.length, window.co2CheckApply, window.co2CheckReverse);
+    if(appliedDiscounts.length == 0 && co2CheckApply && co2CheckReverse) return;
+    if(appliedDiscounts.length > 0 && co2CheckApply) window.co2CheckApply = window.co2CheckReverse = false;
+    if(currentCartDrawer.classList.contains('error') && co2ErrorAlert) {
+      fakeDiv.querySelector('.datora-discount-field-container .datora-discount-error span').innerHTML = co2ErrorAlert;
+      window.co2ErrorAlert = false;
+    }
+    setTimeout(async () =>
     {
       const previousPosition = this.querySelector(".drawer__content").scrollTop;
       if (cartContent && cartContent.item_count === 0)
