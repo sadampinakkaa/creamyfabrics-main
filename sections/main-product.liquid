@@ -977,15 +977,15 @@ document.querySelectorAll('.VariantID--Selected').forEach((inp) => {
   inp.addEventListener('change', handleEvent);
 });
   
-// Function to sort color variants alphabetically
-function sortColorVariantsAlphabetically() {
-    // Wait for DOM to be fully loaded
+
+{% comment %} function sortColorVariantsAlphabetically() {
+   
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', sortColorVariantsAlphabetically);
         return;
     }
 
-    // Find the color swatch container
+    
     const colorSwatchList = document.querySelector('.color-swatch-list');
     
     if (!colorSwatchList) {
@@ -993,7 +993,7 @@ function sortColorVariantsAlphabetically() {
         return;
     }
 
-    // Get all color swatch elements
+    
     const colorSwatches = Array.from(colorSwatchList.querySelectorAll('.color-swatch'));
     
     if (colorSwatches.length === 0) {
@@ -1001,18 +1001,18 @@ function sortColorVariantsAlphabetically() {
         return;
     }
 
-    // Extract color names and sort
+   
     const swatchesWithNames = colorSwatches.map(swatch => {
-        // Try multiple methods to get the color name
+       
         let colorName = '';
         
-        // Method 1: Check for visually-hidden span
+       
         const hiddenSpan = swatch.querySelector('.visually-hidden');
         if (hiddenSpan) {
             colorName = hiddenSpan.textContent.trim();
         }
         
-        // Method 2: Check radio button value
+       
         if (!colorName) {
             const radio = swatch.querySelector('input[type="radio"]');
             if (radio) {
@@ -1020,12 +1020,12 @@ function sortColorVariantsAlphabetically() {
             }
         }
         
-        // Method 3: Check href for color name (fallback)
+      
         if (!colorName) {
             const link = swatch.querySelector('a[href]');
             if (link) {
                 const href = link.getAttribute('href');
-                // Extract potential color name from URL
+              
                 const urlMatch = href.match(/variant=(\d+)/);
                 if (urlMatch) {
                     colorName = `Variant ${urlMatch[1]}`;
@@ -1040,7 +1040,7 @@ function sortColorVariantsAlphabetically() {
         };
     });
 
-    // Sort by color name alphabetically
+   
     swatchesWithNames.sort((a, b) => {
         return a.name.localeCompare(b.name, undefined, {
             numeric: true,
@@ -1048,38 +1048,38 @@ function sortColorVariantsAlphabetically() {
         });
     });
 
-    // Log the sorting process
+   
     console.log('Original order:', swatchesWithNames.map((item, index) => 
         `${index + 1}. ${item.name}`));
     
     console.log('Sorted order:', swatchesWithNames.map((item, index) => 
         `${index + 1}. ${item.name}`));
 
-    // Reorder the DOM elements
+   
     const fragment = document.createDocumentFragment();
     
     swatchesWithNames.forEach(({ element }) => {
         fragment.appendChild(element);
     });
     
-    // Clear the container and append sorted elements
+  
     colorSwatchList.innerHTML = '';
     colorSwatchList.appendChild(fragment);
     
     console.log('Color variants have been sorted alphabetically!');
 }
 
-// Execute when page loads
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', sortColorVariantsAlphabetically);
 } else {
     sortColorVariantsAlphabetically();
 }
 
-// Also execute on window load as a fallback
+
 window.addEventListener('load', sortColorVariantsAlphabetically);
 
-// Alternative approach using MutationObserver for dynamic content
+
 function initColorSorterObserver() {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
@@ -1104,11 +1104,10 @@ function initColorSorterObserver() {
     });
 }
 
-// Initialize observer for dynamic content loading
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initColorSorterObserver);
 } else {
     initColorSorterObserver();
-}
+} {% endcomment %}
 
 </script>
