@@ -49,9 +49,12 @@
         "
         data-index
       >
-        <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
-          <span class="visually-hidden">{{ value }}</span>
-        </a>
+       <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
+  <span class="visually-hidden">{{ value }}</span>
+  {% if variant_for_value.metafields.custom.badge_text_color_option != blank %}
+    <span class="hb_badge-text__variant--option">{{ variant_for_value.metafields.custom.badge_text_color_option }}</span>
+  {% endif %}
+</a>
       </div>
     {% endfor %}
   {% endif %}

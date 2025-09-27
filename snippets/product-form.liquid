@@ -251,11 +251,14 @@
                                   assign disabled_variant = true
                                 endif
                               %}
-                              <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %} {% if hidden_on_storefront == true %}hidden-on-storefront{% endif %} {% if disabled_variant == true %}is-disabled{% endif %}" data-index>
-                                <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
-                                  <span class="visually-hidden">{{ value }}</span>
-                                </a>
-                              </div>
+                             <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %} {% if hidden_on_storefront == true %}hidden-on-storefront{% endif %} {% if disabled_variant == true %}is-disabled{% endif %}" data-index>
+  <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
+    <span class="visually-hidden">{{ value }}</span>
+    {% if variant_for_value.metafields.custom.badge_text_color_option != blank %}
+      <span class="hb_badge-text__variant--option">{{ variant_for_value.metafields.custom.badge_text_color_option }}</span>
+    {% endif %}
+  </a>
+</div>
                             {% endfor %}
                           {% endif %}
                         {% endfor %}
@@ -298,12 +301,14 @@
                             endfor
                           endif
                         %}
-                        <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %}" data-index="{{ forloop.index0 }}">
-                          <input class="color-swatch__radio visually-hidden" type="radio" name="option{{ option.position }}" form="{{ product_form_id }}" id="{{ option_id }}-{{ forloop.index }}" value="{{ value | escape }}" {% if value == option.selected_value %}checked="checked"{% endif %} data-bind-value="{{ option_id }}-value-limited">
-                          <label class="color-swatch__item" for="{{ option_id }}-{{ forloop.index }}" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}; --text-color: {{ color }};">
-                            <span class="visually-hidden">{{ value }}</span>
-                          </label>
-                        </div>
+                       <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %} {% if hidden_on_storefront == true %}hidden-on-storefront{% endif %} {% if disabled_variant == true %}is-disabled{% endif %}" data-index>
+  <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
+    <span class="visually-hidden">{{ value }}</span>
+    {% if variant_for_value.metafields.custom.badge_text_color_option != blank %}
+      <span class="hb_badge-text__variant--option">{{ variant_for_value.metafields.custom.badge_text_color_option }}</span>
+    {% endif %}
+  </a>
+</div>
                       {%- endfor -%}
                       {% if product.metafields.custom.connected_product_for_variants_after %}
                         {% assign connected_product = product.metafields.custom.connected_product_for_variants_after.value %}
@@ -342,11 +347,14 @@
                                   assign disabled_variant = true
                                 endif
                               %}
-                              <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %} {% if hidden_on_storefront == true %}hidden-on-storefront{% endif %} {% if disabled_variant == true %}is-disabled{% endif %}" data-index>
-                                <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
-                                  <span class="visually-hidden">{{ value }}</span>
-                                </a>
-                              </div>
+                            <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %} {% if hidden_on_storefront == true %}hidden-on-storefront{% endif %} {% if disabled_variant == true %}is-disabled{% endif %}" data-index>
+  <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
+    <span class="visually-hidden">{{ value }}</span>
+    {% if variant_for_value.metafields.custom.badge_text_color_option != blank %}
+      <span class="hb_badge-text__variant--option">{{ variant_for_value.metafields.custom.badge_text_color_option }}</span>
+    {% endif %}
+  </a>
+</div>
                             {% endfor %}
                           {% endif %}
                         {% endfor %}
@@ -429,12 +437,14 @@
                               endfor
                             endif
                           %}
-                          <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %}" data-index="{{ forloop.index0 }}">
-                            <input class="color-swatch__radio visually-hidden" type="radio" name="option{{ option.position }}" form="{{ product_form_id }}" id="{{ option_id }}-{{ forloop.index }}" value="{{ value | escape }}" {% if value == option.selected_value %}checked="checked"{% endif %} data-bind-value="{{ option_id }}-value-sale">
-                            <label class="color-swatch__item" for="{{ option_id }}-{{ forloop.index }}" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}; --text-color: {{ color }};">
-                              <span class="visually-hidden">{{ value }}</span>
-                            </label>
-                          </div>
+                         <div class="color-swatch hb_color-swatch {% if color_white_label == color_value_downcase or color_white_label_2 == color_value_downcase %}color-swatch--white{% endif %} {% if hidden_on_storefront == true %}hidden-on-storefront{% endif %} {% if disabled_variant == true %}is-disabled{% endif %}" data-index>
+  <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
+    <span class="visually-hidden">{{ value }}</span>
+    {% if variant_for_value.metafields.custom.badge_text_color_option != blank %}
+      <span class="hb_badge-text__variant--option">{{ variant_for_value.metafields.custom.badge_text_color_option }}</span>
+    {% endif %}
+  </a>
+</div>
                         {%- endfor -%}
                         {% if product.metafields.custom.connected_product_for_variants_after %}
                           {% assign connected_product = product.metafields.custom.connected_product_for_variants_after.value %}
