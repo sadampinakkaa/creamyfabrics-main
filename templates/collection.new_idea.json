@@ -139,6 +139,20 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
+        },
+        "collection_4XPQ7b": {
+          "type": "collection",
+          "settings": {
+            "collection": "nude-collection",
+            "image": "shopify://shop_images/NudeSquare.jpg",
+            "subheading": "",
+            "title": "",
+            "link_text": "",
+            "link_url": "",
+            "text_color": "rgba(0,0,0,0)",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
         }
       },
       "block_order": [
@@ -147,7 +161,8 @@
         "collection_LycBLR",
         "collection_6hnXda",
         "collection_RB83H8",
-        "collection_PVR7EN"
+        "collection_PVR7EN",
+        "collection_4XPQ7b"
       ],
       "name": "Collection list",
       "settings": {
