@@ -1110,4 +1110,296 @@ if (document.readyState === 'loading') {
     initColorSorterObserver();
 }  {% endcomment %}
 
+// Single execution color sorter with state tracking
+(function() {
+    'use strict';
+    
+    // State tracking to ensure single execution
+    let sortingState = {
+        hasBeenSorted: false,
+        isCurrentlySorting: false,
+        attempts: 0,
+        maxAttempts: 3
+    };
+    
+    function sortColorVariantsAlphabetically() {
+        // Prevent multiple simultaneous executions
+        if (sortingState.isCurrentlySorting) {
+            console.log('🚫 Sorting already in progress, skipping...');
+            return false;
+        }
+        
+        // Prevent re-sorting if already done
+        if (sortingState.hasBeenSorted) {
+            console.log('✅ Sorting already completed, skipping...');
+            return false;
+        }
+        
+        // Limit attempts to prevent infinite loops
+        sortingState.attempts++;
+        if (sortingState.attempts > sortingState.maxAttempts) {
+            console.log('⚠️ Max sorting attempts reached, stopping...');
+            return false;
+        }
+        
+        sortingState.isCurrentlySorting = true;
+        console.log(`🔄 Sorting attempt ${sortingState.attempts}/${sortingState.maxAttempts}`);
+        
+        try {
+            // Wait for DOM if still loading
+            if (document.readyState === 'loading') {
+                console.log('⏳ DOM still loading, will retry when ready...');
+                sortingState.isCurrentlySorting = false;
+                return false;
+            }
+
+            // Find the color swatch container
+            const colorSwatchList = document.querySelector('.color-swatch-list');
+            
+            if (!colorSwatchList) {
+                console.log('❌ .color-swatch-list not found, trying alternatives...');
+                
+                // Try alternative selectors
+                const alternatives = [
+                    '.color-swatches',
+                    '.variant-selector',
+                    '.product-colors',
+                    '[data-color-swatches]'
+                ];
+                
+                let foundContainer = null;
+                for (const selector of alternatives) {
+                    foundContainer = document.querySelector(selector);
+                    if (foundContainer) {
+                        console.log(`✅ Found alternative container: ${selector}`);
+                        break;
+                    }
+                }
+                
+                if (!foundContainer) {
+                    sortingState.isCurrentlySorting = false;
+                    return false;
+                }
+            }
+
+            // Get all color swatches
+            const colorSwatches = Array.from(colorSwatchList.querySelectorAll('.color-swatch'));
+            console.log(`🎨 Found ${colorSwatches.length} color swatches`);
+            
+            if (colorSwatches.length === 0) {
+                console.log('❌ No color swatches found');
+                sortingState.isCurrentlySorting = false;
+                return false;
+            }
+            
+            if (colorSwatches.length === 1) {
+                console.log('ℹ️ Only one color swatch, no sorting needed');
+                sortingState.hasBeenSorted = true;
+                sortingState.isCurrentlySorting = false;
+                return true;
+            }
+
+            // Extract color names
+            const swatchesWithNames = colorSwatches.map((swatch, index) => {
+                let colorName = '';
+                
+                // Method 1: visually-hidden span
+                const hiddenSpan = swatch.querySelector('.visually-hidden');
+                if (hiddenSpan) {
+                    colorName = hiddenSpan.textContent.trim();
+                }
+                
+                // Method 2: radio input value
+                if (!colorName) {
+                    const radio = swatch.querySelector('input[type="radio"]');
+                    if (radio) {
+                        colorName = radio.value || radio.getAttribute('data-color') || '';
+                    }
+                }
+                
+                // Method 3: data attributes
+                if (!colorName) {
+                    colorName = swatch.getAttribute('data-color') || 
+                              swatch.getAttribute('data-variant-title') || 
+                              swatch.getAttribute('title') || '';
+                }
+                
+                // Method 4: link href variant ID
+                if (!colorName) {
+                    const link = swatch.querySelector('a[href]');
+                    if (link) {
+                        const href = link.getAttribute('href');
+                        const urlMatch = href.match(/variant=(\d+)/);
+                        if (urlMatch) {
+                            colorName = `Variant ${urlMatch[1]}`;
+                        }
+                    }
+                }
+                
+                return {
+                    element: swatch,
+                    name: colorName || `Unknown ${index + 1}`,
+                    originalIndex: index
+                };
+            });
+
+            // Check if sorting is actually needed
+            const originalOrder = swatchesWithNames.map(s => s.name);
+            const sortedOrder = [...swatchesWithNames].sort((a, b) => {
+                return a.name.localeCompare(b.name, undefined, {
+                    numeric: true,
+                    sensitivity: 'base'
+                });
+            }).map(s => s.name);
+            
+            const orderChanged = originalOrder.join('|') !== sortedOrder.join('|');
+            
+            if (!orderChanged) {
+                console.log('ℹ️ Swatches already in alphabetical order');
+                sortingState.hasBeenSorted = true;
+                sortingState.isCurrentlySorting = false;
+                return true;
+            }
+
+            // Sort the swatches
+            swatchesWithNames.sort((a, b) => {
+                return a.name.localeCompare(b.name, undefined, {
+                    numeric: true,
+                    sensitivity: 'base'
+                });
+            });
+
+            console.log('📊 Original order:', originalOrder);
+            console.log('📊 Sorted order:', swatchesWithNames.map(s => s.name));
+
+            // Re-order DOM elements
+            const fragment = document.createDocumentFragment();
+            
+            swatchesWithNames.forEach(({ element }) => {
+                fragment.appendChild(element);
+            });
+            
+            colorSwatchList.innerHTML = '';
+            colorSwatchList.appendChild(fragment);
+            
+            // Mark as completed
+            sortingState.hasBeenSorted = true;
+            sortingState.isCurrentlySorting = false;
+            
+            console.log('✅ Color variants sorted alphabetically! (Single execution)');
+            
+            // Add a data attribute to mark this container as sorted
+            colorSwatchList.setAttribute('data-colors-sorted', 'true');
+            
+            return true;
+            
+        } catch (error) {
+            console.error('❌ Error during sorting:', error);
+            sortingState.isCurrentlySorting = false;
+            return false;
+        }
+    }
+    
+    // Smart initialization - only one trigger will succeed
+    function initializeSorter() {
+        console.log('🚀 Initializing single-execution color sorter...');
+        
+        // Single delayed execution function
+        function executeSorter() {
+            // Double-check we haven't already sorted
+            if (sortingState.hasBeenSorted || document.querySelector('.color-swatch-list[data-colors-sorted="true"]')) {
+                console.log('✅ Already sorted, skipping execution');
+                return;
+            }
+            
+            const success = sortColorVariantsAlphabetically();
+            
+            // If failed and we have attempts left, try again after delay
+            if (!success && sortingState.attempts < sortingState.maxAttempts) {
+                console.log(`⏳ Attempt ${sortingState.attempts} failed, retrying in 1 second...`);
+                setTimeout(executeSorter, 1000);
+            }
+        }
+        
+        // Choose the best trigger based on current state
+        if (document.readyState === 'complete') {
+            // Page fully loaded
+            console.log('📄 Page already loaded, executing immediately');
+            setTimeout(executeSorter, 100);
+        } else if (document.readyState === 'interactive') {
+            // DOM ready but resources still loading
+            console.log('📄 DOM ready, executing with short delay');
+            setTimeout(executeSorter, 200);
+        } else {
+            // Still loading
+            console.log('📄 Waiting for DOMContentLoaded...');
+            document.addEventListener('DOMContentLoaded', () => {
+                console.log('📄 DOMContentLoaded fired');
+                setTimeout(executeSorter, 100);
+            }, { once: true });
+        }
+        
+        // Fallback for SPA or dynamic content (with protection against re-sorting)
+        const observer = new MutationObserver((mutations) => {
+            // Only observe if we haven't sorted yet
+            if (sortingState.hasBeenSorted) {
+                observer.disconnect();
+                return;
+            }
+            
+            const hasNewColorContent = mutations.some(mutation => 
+                mutation.type === 'childList' && 
+                Array.from(mutation.addedNodes).some(node => 
+                    node.nodeType === Node.ELEMENT_NODE && 
+                    (node.classList?.contains('color-swatch-list') || 
+                     node.querySelector?.('.color-swatch-list'))
+                )
+            );
+            
+            if (hasNewColorContent) {
+                console.log('👁️ New color content detected via MutationObserver');
+                setTimeout(executeSorter, 300);
+            }
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        // Auto-disconnect observer after 10 seconds to prevent memory leaks
+        setTimeout(() => {
+            observer.disconnect();
+            console.log('👁️ MutationObserver auto-disconnected');
+        }, 10000);
+    }
+    
+    // Reset function for manual testing
+    window.resetColorSorter = function() {
+        sortingState.hasBeenSorted = false;
+        sortingState.isCurrentlySorting = false;
+        sortingState.attempts = 0;
+        
+        // Remove sorted markers
+        document.querySelectorAll('[data-colors-sorted]').forEach(el => {
+            el.removeAttribute('data-colors-sorted');
+        });
+        
+        console.log('🔄 Color sorter state reset');
+    };
+    
+    // Manual trigger for testing
+    window.sortColors = function() {
+        if (sortingState.hasBeenSorted) {
+            console.log('ℹ️ Use resetColorSorter() first if you want to sort again');
+            return;
+        }
+        return sortColorVariantsAlphabetically();
+    };
+    
+    // Initialize
+    initializeSorter();
+    
+})();
+
 </script>
