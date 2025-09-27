@@ -105,7 +105,7 @@
       "settings": {
         "show_sort_by": false,
         "hide_ratings": false,
-        "products_per_page": 24,
+        "products_per_page": 50,
         "mobile_products_per_row": "2",
         "desktop_products_per_row": 4,
         "show_filters": false,
