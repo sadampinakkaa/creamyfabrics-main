@@ -977,7 +977,7 @@ document.querySelectorAll('.VariantID--Selected').forEach((inp) => {
   inp.addEventListener('change', handleEvent);
 });
   
-
+{% comment %} 
 function sortColorVariantsAlphabetically() {
    
     if (document.readyState === 'loading') {
@@ -1108,6 +1108,6 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initColorSorterObserver);
 } else {
     initColorSorterObserver();
-} 
+}  {% endcomment %}
 
 </script>
