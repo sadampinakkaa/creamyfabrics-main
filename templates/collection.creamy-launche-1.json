@@ -15,7 +15,7 @@
         "image_eCUaam": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/NEON_COLLECTION_2160_x_1080_px_2160_x_1080_px_4.png",
+            "image": "shopify://shop_images/CMD_1_nowopen_FINAL_1_NF_GZJHVB_N.jpg",
             "text_position": "middle_center",
             "subheading": "",
             "title": "",
@@ -34,7 +34,6 @@
       "block_order": [
         "image_eCUaam"
       ],
-      "disabled": true,
       "settings": {
         "section_height": "auto",
         "transition_type": "sweep",
