@@ -977,7 +977,6 @@ document.querySelectorAll('.VariantID--Selected').forEach((inp) => {
   inp.addEventListener('change', handleEvent);
 });
   
-
 function sortColorVariantsAlphabetically() {
    
     if (document.readyState === 'loading') {
@@ -985,101 +984,107 @@ function sortColorVariantsAlphabetically() {
         return;
     }
 
+    // Find ALL color swatch lists instead of just the first one
+    const colorSwatchLists = document.querySelectorAll('.color-swatch-list');
     
-    const colorSwatchList = document.querySelector('.color-swatch-list');
-    
-    if (!colorSwatchList) {
-        console.warn('Color swatch list not found');
+    if (colorSwatchLists.length === 0) {
+        console.warn('No color swatch lists found');
         return;
     }
 
-    
-    const colorSwatches = Array.from(colorSwatchList.querySelectorAll('.color-swatch'));
-    
-    if (colorSwatches.length === 0) {
-        console.warn('No color swatches found');
-        return;
-    }
+    console.log(`Found ${colorSwatchLists.length} color swatch list(s)`);
 
-   
-    const swatchesWithNames = colorSwatches.map(swatch => {
-       
-        let colorName = '';
+    // Process each color swatch list
+    colorSwatchLists.forEach((colorSwatchList, listIndex) => {
+        console.log(`Processing color swatch list ${listIndex + 1}`);
         
-       
-        const hiddenSpan = swatch.querySelector('.visually-hidden');
-        if (hiddenSpan) {
-            colorName = hiddenSpan.textContent.trim();
+        const colorSwatches = Array.from(colorSwatchList.querySelectorAll('.color-swatch'));
+        
+        if (colorSwatches.length === 0) {
+            console.warn(`No color swatches found in list ${listIndex + 1}`);
+            return;
         }
-        
-       
-        if (!colorName) {
-            const radio = swatch.querySelector('input[type="radio"]');
-            if (radio) {
-                colorName = radio.value;
+
+        // Extract color names for each swatch in this list
+        const swatchesWithNames = colorSwatches.map(swatch => {
+            let colorName = '';
+            
+            // Method 1: Check for visually hidden text
+            const hiddenSpan = swatch.querySelector('.visually-hidden');
+            if (hiddenSpan) {
+                colorName = hiddenSpan.textContent.trim();
             }
-        }
-        
-      
-        if (!colorName) {
-            const link = swatch.querySelector('a[href]');
-            if (link) {
-                const href = link.getAttribute('href');
-              
-                const urlMatch = href.match(/variant=(\d+)/);
-                if (urlMatch) {
-                    colorName = `Variant ${urlMatch[1]}`;
+            
+            // Method 2: Check radio button value
+            if (!colorName) {
+                const radio = swatch.querySelector('input[type="radio"]');
+                if (radio) {
+                    colorName = radio.value;
                 }
             }
-        }
-        
-        return {
-            element: swatch,
-            name: colorName || 'Unknown',
-            originalIndex: colorSwatches.indexOf(swatch)
-        };
-    });
-
-   
-    swatchesWithNames.sort((a, b) => {
-        return a.name.localeCompare(b.name, undefined, {
-            numeric: true,
-            sensitivity: 'base'
+            
+            // Method 3: Extract from URL variant parameter
+            if (!colorName) {
+                const link = swatch.querySelector('a[href]');
+                if (link) {
+                    const href = link.getAttribute('href');
+                    const urlMatch = href.match(/variant=(\d+)/);
+                    if (urlMatch) {
+                        colorName = `Variant ${urlMatch[1]}`;
+                    }
+                }
+            }
+            
+            return {
+                element: swatch,
+                name: colorName || 'Unknown',
+                originalIndex: colorSwatches.indexOf(swatch)
+            };
         });
-    });
 
-   
-    console.log('Original order:', swatchesWithNames.map((item, index) => 
-        `${index + 1}. ${item.name}`));
-    
-    console.log('Sorted order:', swatchesWithNames.map((item, index) => 
-        `${index + 1}. ${item.name}`));
+        // Sort alphabetically
+        swatchesWithNames.sort((a, b) => {
+            return a.name.localeCompare(b.name, undefined, {
+                numeric: true,
+                sensitivity: 'base'
+            });
+        });
 
-   
-    const fragment = document.createDocumentFragment();
-    
-    swatchesWithNames.forEach(({ element }) => {
-        fragment.appendChild(element);
+        // Log the sorting for this list
+        console.log(`List ${listIndex + 1} - Original order:`, swatchesWithNames.map((item, index) => 
+            `${index + 1}. ${item.name}`));
+        
+        console.log(`List ${listIndex + 1} - Sorted order:`, swatchesWithNames.map((item, index) => 
+            `${index + 1}. ${item.name}`));
+
+        // Rebuild this color swatch list
+        const fragment = document.createDocumentFragment();
+        
+        swatchesWithNames.forEach(({ element }) => {
+            fragment.appendChild(element);
+        });
+        
+        // Replace contents of this specific list
+        colorSwatchList.innerHTML = '';
+        colorSwatchList.appendChild(fragment);
+        
+        console.log(`Color variants in list ${listIndex + 1} have been sorted alphabetically!`);
     });
     
-  
-    colorSwatchList.innerHTML = '';
-    colorSwatchList.appendChild(fragment);
-    
-    console.log('Color variants have been sorted alphabetically!');
+    console.log('All color variant lists have been processed!');
 }
 
-
+// Initialize on DOM ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', sortColorVariantsAlphabetically);
 } else {
     sortColorVariantsAlphabetically();
 }
 
-
+// Also run on window load as backup
 window.addEventListener('load', sortColorVariantsAlphabetically);
 
-
+// Observer for dynamically added content
 function initColorSorterObserver() {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
@@ -1108,6 +1113,6 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initColorSorterObserver);
 } else {
     initColorSorterObserver();
-} 
+}
 
 </script>
