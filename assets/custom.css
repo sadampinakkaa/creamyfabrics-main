@@ -1320,7 +1320,7 @@ body.new-big-redesign-ab-test .product-meta .price-list .price--compare span {
 	text-decoration: line-through;
 }
 body.new-big-redesign-ab-test .product-meta.product-meta .product-meta__label-list.label-list span {
-	margin-left: 1.2rem;
+	margin-left: 0;
 	display: flex;
 	padding: 0.4rem 1.2rem;
 	justify-content: center;
