@@ -193,7 +193,7 @@ span.bulletPointsContent {
   text-transform: none;
   position: relative;
   display: inline-flex;
-  margin-left: 10px;
+  margin-left: 0px;
   padding: 2px 6px 2px 4px;
   border-radius: 12px;
   background-color: #fc6;
