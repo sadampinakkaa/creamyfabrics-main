@@ -207,11 +207,11 @@
         "item_Rafxcm": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.2.png",
+            "image": "shopify://shop_images/Elastisch.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Glättende Sanduhr Figur</p>",
+            "content": "<p>Elastisch</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -222,11 +222,11 @@
         "item_7KUhkB": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.3.png",
+            "image": "shopify://shop_images/Sichere_Passform_ohne_sichtbare_BH-Trager.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Atmungsaktiv & Anti-Schwitz</p>",
+            "content": "<p>Sichere Passform ohne sichtbare BH-Träger</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -237,11 +237,11 @@
         "item_wXRMVb": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.4.png",
+            "image": "shopify://shop_images/Ultraweich_und_atmungsaktiv.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Natürliche Po-Lifting-Effekt</p>",
+            "content": "<p>Ultraweich und atmungsaktiv</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -252,11 +252,11 @@
         "item_Xky7cq": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.6.png",
+            "image": "shopify://shop_images/Vielseitig_kombinierbar_7551de5e-50b3-41e2-b7d4-bad5e5c89da5.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Abnehmbare Träger</p>",
+            "content": "<p>Vielseitig kombinierbar</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -267,11 +267,11 @@
         "item_NLYGKE": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.1.png",
+            "image": "shopify://shop_images/Weiches_Rippmaterial.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Quetscht nicht ein</p>",
+            "content": "<p>Weiches Rippmaterial</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -357,6 +357,7 @@
         "template--19289149538637__3070aadd-27d6-4b1e-a531-b37144904f16-item-1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/4021-13-Model-Front-Detail.jpg",
             "tab_label": "",
             "subheading": "STILVOLLER HALT, DEN MAN FÜHLT.",
             "title": "Für einen femininen Look mit maximalem Tragekomfort.",
