@@ -79,7 +79,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.dataset.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KX3382H6');</script>
 <!-- End Google Tag Manager -->
-	
+{% comment %} GTM Data Layer Enhancement for TikTok ViewContent Tracking {% endcomment %}
+{% if product %}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  // Push e-commerce details for the product page view
+  dataLayer.push({
+    'ecommerce': {
+      'currencyCode': '{{ shop.currency }}',
+      'detail': {
+        'products': [{
+          // **CRITICAL: Using the Variant ID (Unique Product ID)**
+          'id': '{{ product.selected_or_first_available_variant.id }}', 
+          'name': '{{ product.title | escape }}',
+          'price': '{{ product.selected_or_first_available_variant.price | divided_by: 100.0 }}',
+          'category': '{{ product.type | escape }}',
+          'brand': '{{ product.vendor | escape }}'
+        }]
+      }
+    },
+    'event': 'productDetailView' // Custom Event for the GTM Trigger
+  });
+</script>
+{% endif %}	
+
+
+
+
    <script async data-src="https://scripting.ibgrej509o.com/ckiv2.js?csid=0ace62f7-0dde-4412-bf50-8d8f302d5706"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
