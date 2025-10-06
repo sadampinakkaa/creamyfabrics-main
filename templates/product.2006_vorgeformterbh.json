@@ -166,7 +166,7 @@
     "multi_column_LEa74J": {
       "type": "multi-column",
       "blocks": {
-        "item_MFqARV": {
+        "item_dRh7rx": {
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Verstellbare_Trager.png",
@@ -181,14 +181,29 @@
             "vertical_alignment": "start"
           }
         },
-        "item_TmXwn8": {
+        "item_MFqARV": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Tragerlos_vielseitig.png",
+            "image": "shopify://shop_images/Mittlerer_Druck_zum_Anheben_der_Brust.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Trägerlos & vielseitig</p>",
+            "content": "<p>Mittlerer Druck zum Anheben der Brust</p>",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_alignment": "center",
+            "vertical_alignment": "start"
+          }
+        },
+        "item_TmXwn8": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Mittlere_bis_hohe_Unterstutzung.png",
+            "image_width": 50,
+            "image_border": "rgba(0,0,0,0)",
+            "title": "",
+            "content": "<p>Mittlere bis hohe Unterstützung</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -199,26 +214,11 @@
         "item_qYWTCH": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Hebt_Formt_die_Brust_808a34c0-afe2-424c-86e3-2a13e54bdde5.png",
+            "image": "shopify://shop_images/Ultraweich_und_atmungsaktiv.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Hebt & Formt die Brust</p>",
-            "link_text": "",
-            "link_url": "",
-            "link_style": "link",
-            "text_alignment": "center",
-            "vertical_alignment": "start"
-          }
-        },
-        "item_dRh7rx": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Starker_Halt_und_Struktur.png",
-            "image_width": 50,
-            "image_border": "rgba(0,0,0,0)",
-            "title": "",
-            "content": "<p>Starker Halt und Struktur</p>",
+            "content": "<p>Ultraweich und atmungsaktiv</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -292,10 +292,10 @@
         }
       },
       "block_order": [
+        "item_dRh7rx",
         "item_MFqARV",
         "item_TmXwn8",
         "item_qYWTCH",
-        "item_dRh7rx",
         "item_Xkafgh",
         "item_tCge3h",
         "item_XLrFWn",
