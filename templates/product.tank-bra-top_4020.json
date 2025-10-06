@@ -237,11 +237,11 @@
         "item_wXRMVb": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.4.png",
+            "image": "shopify://shop_images/Ultraweich_und_atmungsaktiv.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Natürliche Po-Lifting-Effekt</p>",
+            "content": "<p>Ultraweich und atmungsaktiv</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
