@@ -267,11 +267,11 @@
         "item_NLYGKE": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/i_Icons_4.1.png",
+            "image": "shopify://shop_images/Weiches_Rippmaterial.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Quetscht nicht ein</p>",
+            "content": "<p>Weiches Rippmaterial</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -357,6 +357,7 @@
         "template--19289149538637__3070aadd-27d6-4b1e-a531-b37144904f16-item-1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/4020-10-Model-Front-Detail.jpg",
             "tab_label": "",
             "subheading": "EIN TOP, DAS MEHR KANN.",
             "title": "Komfort, Halt und Stil in einem.",
