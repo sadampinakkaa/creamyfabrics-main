@@ -169,7 +169,7 @@
         "item_MFqARV": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Entlastet_deine_schultern_ruecken.jpg",
+            "image": "shopify://shop_images/Verstellbare_Trager_f7a5e46a-ccb4-4e6c-b11b-d10d442314ee.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
@@ -184,11 +184,11 @@
         "item_TmXwn8": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Schneidet_nicht_ein_icon_6e1b8ee9-12c3-415a-ae58-35afd2cd00dc.jpg",
+            "image": "shopify://shop_images/Tragerlos_vielseitig.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Schneidet nicht ein</p>",
+            "content": "<p>Trägerlos & vielseitig</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
