@@ -199,11 +199,11 @@
         "item_qYWTCH": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Nahtlos_icon_57fbad91-f4e1-479a-96f1-a04b5613e18d.jpg",
+            "image": "shopify://shop_images/Hebt_Formt_die_Brust_808a34c0-afe2-424c-86e3-2a13e54bdde5.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Nahtlos</p>",
+            "content": "<p>Hebt & Formt die Brust</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -214,11 +214,11 @@
         "item_dRh7rx": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/perfekte_passform_icon_11d05d1e-a89b-40ae-a11a-538caa3774f5.jpg",
+            "image": "shopify://shop_images/Starker_Halt_und_Struktur.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Perfekte Passform</p>",
+            "content": "<p>Starker Halt und Struktur</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -228,6 +228,7 @@
         },
         "item_Xkafgh": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/keine_buegel_icon_869510e5-bd63-45ed-8896-60be9eeba576.jpg",
             "image_width": 50,
@@ -243,6 +244,7 @@
         },
         "item_tCge3h": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/atmungsaktiv_anti_schwitz.jpg",
             "image_width": 50,
@@ -258,6 +260,7 @@
         },
         "item_XLrFWn": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/extra_rausnehmbare_pads_de51d8ad-2b62-49cc-b53d-3b73bad49efd.jpg",
             "image_width": 50,
@@ -273,6 +276,7 @@
         },
         "item_7HidAU": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Ultra_weiches_Material_icon_9f423485-dbcd-48cf-940f-95f6d46a94aa.jpg",
             "image_width": 50,
