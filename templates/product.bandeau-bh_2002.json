@@ -169,11 +169,11 @@
         "item_MFqARV": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Entlastet_deine_schultern_ruecken.jpg",
+            "image": "shopify://shop_images/Bugelloser_Tragekomfort.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Entlastet Schulter & Rücken</p>",
+            "content": "<p>Bügelloser Tragekomfort</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -184,11 +184,11 @@
         "item_TmXwn8": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Schneidet_nicht_ein_icon_6e1b8ee9-12c3-415a-ae58-35afd2cd00dc.jpg",
+            "image": "shopify://shop_images/Entfernbare_Pads.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Schneidet nicht ein</p>",
+            "content": "<p>Entfernbare Pads</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -199,11 +199,11 @@
         "item_qYWTCH": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Nahtlos_icon_57fbad91-f4e1-479a-96f1-a04b5613e18d.jpg",
+            "image": "shopify://shop_images/Tragerloser_Bandeau-BH.png",
             "image_width": 50,
             "image_border": "rgba(0,0,0,0)",
             "title": "",
-            "content": "<p>Nahtlos</p>",
+            "content": "<p>Trägerloser Bandeau-BH</p>",
             "link_text": "",
             "link_url": "",
             "link_style": "link",
@@ -213,6 +213,7 @@
         },
         "item_dRh7rx": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/perfekte_passform_icon_11d05d1e-a89b-40ae-a11a-538caa3774f5.jpg",
             "image_width": 50,
@@ -228,6 +229,7 @@
         },
         "item_Xkafgh": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/keine_buegel_icon_869510e5-bd63-45ed-8896-60be9eeba576.jpg",
             "image_width": 50,
@@ -243,6 +245,7 @@
         },
         "item_tCge3h": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/atmungsaktiv_anti_schwitz.jpg",
             "image_width": 50,
@@ -258,6 +261,7 @@
         },
         "item_XLrFWn": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/extra_rausnehmbare_pads_de51d8ad-2b62-49cc-b53d-3b73bad49efd.jpg",
             "image_width": 50,
@@ -273,6 +277,7 @@
         },
         "item_7HidAU": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Ultra_weiches_Material_icon_9f423485-dbcd-48cf-940f-95f6d46a94aa.jpg",
             "image_width": 50,
