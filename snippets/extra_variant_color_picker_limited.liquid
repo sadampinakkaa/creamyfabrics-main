@@ -46,6 +46,7 @@
           {% if disabled_variant == true %} is-disabled{% endif %}
         "
         data-index
+        data-color-name={{ value| replace: " " , "-" }}
       >
         <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
           <span class="visually-hidden">{{ value }}</span>
