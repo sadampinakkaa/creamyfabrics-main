@@ -47,6 +47,7 @@
           {% if hidden_on_storefront == true %} hidden-on-storefront{% endif %}
           {% if disabled_variant == true %} is-disabled{% endif %}
         "
+        data-color-name={{ value| replace: " " , "-" }}
         data-index
       >
        <a href="{{ connected_product.url }}/?variant={{ variant_for_value.id }}" class="color-swatch__item" style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: value %}">
