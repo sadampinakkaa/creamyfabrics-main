@@ -826,3 +826,6 @@ var updateProductMedia = (variantId) => {
 		}
 	});
 }
+
+
+

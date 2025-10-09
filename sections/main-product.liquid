@@ -128,8 +128,13 @@
             endif
           %}
           <a href="{{ product.url }}" class="product-item-meta__title">{{ product_title }}</a>
-
-          <div class="product-item-meta__price-list-container" role="region" aria-live="polite">
+ <div class="product-item-meta__price-list-container" role="region" aria-live="polite" 
+          data-datora-vid="{{ product.selected_or_first_available_variant.id }}"
+          data-datora-pid="{{ product.id }}"
+          data-datora-spgid="false"
+          data-datora-tags="{{ product.tags | join:',' }}"
+          data-datora-price="{{ product.selected_or_first_available_variant.price }}"
+          data-datora-compare="{{ product.selected_or_first_available_variant.compare_at_price }}">
             <div class="price-list" data-product-price-list>
               {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
                 <span class="price price--highlight">
@@ -177,8 +182,12 @@
                   </div>
                 </div>
               {%- endif -%}
+              <br/>
+            <li hidden class="datora discount-badge dd">
+               {%- render 'icon' with 'discount-badge' -%}
+               <span data-datora fghdf></span>
+            </li>
             </div>
-
             {%- if template.suffix == 'quick-buy-popover' -%}
               <a href="{{ product.url }}" class="link text--subdued">{{ 'product.general.view_details' | t }}</a>
             {%- endif -%}
@@ -954,7 +963,11 @@
 </div>
 
 <script>
-  
+ 
+
+
+
+
 function handleEvent(event) {
     const selectedVariantId = this.value;
     const dupProductElement = document.querySelector(`.DuplicatedProduct--Custom[data-variant-id="${selectedVariantId}"]`);

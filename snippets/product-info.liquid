@@ -35,6 +35,7 @@
         data-raters="{{ product.metafields.loox.num_reviews }}"
       ></div>
     </a>
+    
 
     {%- if section.settings.show_vendor -%}
       <h2 class="product-meta__vendor heading heading--small">
@@ -99,12 +100,13 @@
     </div>
 
     <div
-      data-datora-vid="{{ product.selected_or_first_available_variant.id }}"
-      data-datora-pid="{{ product.id }}"
-      data-datora-spgid="{{ product.selected_or_first_available_variant.selected_selling_plan_allocation.selling_plan_group_id }}"
-      data-datora-tags="{{ product.tags }}"
-      data-datora-price="{{ product.selected_or_first_available_variant.price }}"
-      class="product-meta__price-list-container" role="region" aria-live="polite">
+    data-datora-vid="{{ product.selected_or_first_available_variant.id }}"
+    data-datora-pid="{{ product.id }}"
+    data-datora-spgid="{{ product.selected_or_first_available_variant.selected_selling_plan_allocation.selling_plan_group_id }}"
+    data-datora-tags="{{ product.tags | join:',' }}"
+    data-datora-price="{{ product.selected_or_first_available_variant.price }}"
+    data-datora-compare="{{ product.selected_or_first_available_variant.compare_at_price }}"
+    class="product-meta__price-list-container" role="region" aria-live="polite">
       <div class="price-list" data-product-price-list>
         {%- if product.selected_or_first_available_variant.compare_at_price
             > product.selected_or_first_available_variant.price
@@ -186,12 +188,13 @@
 
           <span class="label label--highlight">{{ 'collection.product.discount_html' | t: savings: savings }}</span>
         {%- endunless -%}
+        <discount-badge hidden style="margin-left: 0px;" class="datora discount-badge">
+          {%- render 'icon' with 'discount-badge' -%}
+          <span data-datora></span>
+        </discount-badge>
       </div>
-      <br />
-      <li hidden style="margin-left: 1rem;" class="datora discount-badge">
-         {%- render 'icon' with 'discount-badge' -%}
-         <span data-datora></span>
-      </li>
+      
+      
     </div>
 
     {%- if section.settings.show_taxes_included -%}

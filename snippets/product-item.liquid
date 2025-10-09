@@ -243,8 +243,9 @@
         data-datora-vid="{{ cheapest_variant.id }}"
         data-datora-pid="{{ product.id }}"
         data-datora-spgid="{{ cheapest_variant.selected_selling_plan_allocation.selling_plan_group_id }}"
-        data-datora-tags="{{ product.tags }}"
+        data-datora-tags="{{ product.tags | join:',' }}"
         data-datora-price="{{ cheapest_variant.price }}"
+        data-datora-compare="{{ cheapest_variant.compare_at_price }}"
        >
         <div class="price-list price-list--centered">
           {%- if product.price_varies and product.compare_at_price -%}
@@ -380,7 +381,7 @@
           {%- endif -%}
         </div>
         <br />
-        <li hidden class="datora discount-badge">
+        <li hidden class="datora discount-badge df">
            {%- render 'icon' with 'discount-badge' -%}
            <span data-datora></span>
         </li>

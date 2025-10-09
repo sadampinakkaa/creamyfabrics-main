@@ -2373,3 +2373,156 @@ body.new-big-redesign-ab-test .product--image-and-size-details .product--size-de
 [js-product-media-id]:not(.active) {
 	display: none;
 }
+/* Datora */
+.datora-discount-field-container {
+	display: flex;
+	flex-direction: column;
+  }
+
+  .datora-discount-field-input {
+	display: flex;
+	flex-direction: row;
+  }
+  .datora-discount-field-input button{
+    padding: 0 clamp(15px, 2vw, 30px) !important;
+  }
+  .applied-discounts-wrapper{
+	margin-top: 10px;
+  }
+  .applied-discount{
+	text-transform: uppercase;
+    background: #cbc6c6;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 2px 10px;
+    gap: 5px;
+  }
+  .applied-discount button[disabled]{
+	opacity:0.6;
+	pointer-events:none;
+  }
+  .remove-discount .icon{
+	width: 10px;
+    height: 10px;
+  }
+  
+  .datora-discount-field-container .datora-input {
+	flex-grow: 1;
+	margin-right: 1rem;
+  }
+  
+  .datora.discount-badge[hidden] {
+	display: none;
+  }
+  
+  .datora-discount-field-container .datora-submit {
+	background: black;
+	color: white;
+  } 
+
+  .datora-discount-field-container .datora-submit.hidden {
+	display: none !important;
+  }
+
+
+  .datora-discount-field-container.loading :is(.applied-discount, .input__field, .datora-submit){
+	pointer-events: none;
+  }
+  
+  .datora-discount-field-container .datora-submit .loader-button__text {
+	z-index:1;
+  }
+  .datora-discount-field-container.loading .datora-submit .loader-button__text {
+	opacity: 0;
+	visibility: hidden;
+  }
+
+  .datora-discount-field-container .datora-submit .loader-button__loader{
+	inset: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+	pointer-events: none;
+	z-index:0;
+  }
+  .datora-discount-field-container.loading .datora-submit .loader-button__loader{
+	opacity: 1;
+  }
+  .datora-discount-field-container .datora-discount-error{
+	align-items: center;
+    border: 1px solid var(--edb-border);
+    box-sizing: border-box;
+    display: none;
+    font-size: 13px;
+    line-height: 1.3em;
+    margin: 0 0 16px 0;
+    padding: 8px 32px 8px 8px;
+    position: relative;
+    width: 100%;
+  	background-color: var(--edb-bg);
+    color: var(--edb-text);
+  }
+  cart-drawer.error .datora-discount-field-container .datora-discount-error,
+  .datora-discount-field-container.error .datora-discount-error{
+	display: flex !important;
+  }
+  .datora-discount-field-container .datora-discount-error button{
+	position: absolute;
+	right:0;
+	top:0;
+	height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .datora-discount-field-container .datora-discount-error button svg{
+	width:14px;
+	height:14px;
+  }
+  
+  .datora.discount-badge {
+	display: inline-block;
+	border-radius: 12px;
+	background: #FFCC66;
+	color: #282828;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 12px;
+	margin-bottom: 5px;
+  }
+  
+  .datora.discount-badge svg {
+	display: inline-block;
+  }
+
+  cart-drawer .datora-payments{
+	width: 100%;
+  }
+  cart-drawer .datora-payments ul{
+	width: 100%;
+    padding: 0 !important;
+    display: flex;
+    gap: 8px;
+    list-style-type: none;
+    justify-content: space-between;
+  }
+
+  cart-drawer .datora-payments ul li{
+	width: 100%;
+	max-width:48px;
+  }
+  cart-drawer .datora-payments ul li svg{
+	width: 100%;
+	height:auto;
+  }
+
+  cart-drawer .datora-payments ul li svg[aria-labelledby='pi-apple_pay'] > path[d]:nth-of-type(1){
+	opacity:0.07 !important;
+}
+
+  
+  /* End Datora */

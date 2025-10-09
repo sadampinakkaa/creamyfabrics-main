@@ -88,7 +88,14 @@
       <a href="{{ variant.url }}" data-instant class="product-item-meta__title">
         {{ product_title }}
       </a>
-      <div class="product-item-meta__price-list-container">
+      <div class="product-item-meta__price-list-container"
+          data-datora-vid="{{ variant.id }}"
+          data-datora-pid="{{ product.id }}"
+          data-datora-spgid="false"
+          data-datora-tags="{{ product.tags | join:',' }}"
+          data-datora-price="{{ variant.price }}"
+          data-datora-compare="{{ variant.compare_at_price }}"
+          >
         <div class="price-list price-list--centered">
         
           {%- if variant.price < variant.compare_at_price -%}
@@ -111,7 +118,7 @@
               {%- endif -%}
             </span>
           {%- else -%}
-            <span class="price">
+            <span class="price" data-datora-classes="price price--highlight">
               <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
 
               {%- if settings.currency_code_enabled -%}
@@ -120,8 +127,19 @@
                 {{- variant.price | money -}}
               {%- endif -%}
             </span>
+
+            <span class="hidden" data-datora-classes="price price--compare">
+              <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
+              <span></span>
+            </span>
+
           {%- endif -%}
+          <li class="datora discount-badge" hidden>
+          {%- render 'icon' with 'discount-badge' -%}
+          <span data-datora></span>
+        </li>
         </div>
+        
       </div>
       
       {% unless variant.metafields.custom.new_variant_not_for_sale and hide_ratings %}

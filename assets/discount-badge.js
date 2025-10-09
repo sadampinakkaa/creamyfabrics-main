@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const getDiscountCode = hbBetCookie('discount_code');
-
+     console.log(getDiscountCode , "code..............")
     if(getDiscountCode) {
 
         const encodeTag = document.querySelector('[js-hb-badge-list]');
