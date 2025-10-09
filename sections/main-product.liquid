@@ -1037,6 +1037,51 @@ function getColorName(swatch) {
     return colorName || 'Unknown';
 }
 
+// Check if swatch is visible (not hidden or disabled)
+function isSwatchVisible(swatch) {
+    const classes = swatch.className || '';
+    return !classes.includes('hidden-on-storefront') && !classes.includes('is-disabled');
+}
+
+// Predefined color order for array2 (based on HTML document)
+const PREDEFINED_COLOR_ORDER = [
+    'Schwarz',
+    'Beige',
+    'Weiß',
+    'Braun',
+    'Graphit',
+    'Taupe',
+    'Sand',
+    'Caramel'
+];
+
+function sortColorsByPredefinedOrder(colors) {
+    // Create a map for quick lookup with case-insensitive matching
+    const orderMap = new Map();
+    PREDEFINED_COLOR_ORDER.forEach((color, index) => {
+        orderMap.set(color.toLowerCase(), index);
+    });
+    
+    // Separate colors into ordered and unordered
+    const orderedColors = [];
+    const unorderedColors = [];
+    
+    colors.forEach(color => {
+        const index = orderMap.get(color.toLowerCase());
+        if (index !== undefined) {
+            orderedColors.push({ color, index });
+        } else {
+            unorderedColors.push(color);
+        }
+    });
+    
+    // Sort ordered colors by their predefined index
+    orderedColors.sort((a, b) => a.index - b.index);
+    
+    // Combine: predefined order first, then any remaining colors
+    return [...orderedColors.map(item => item.color), ...unorderedColors];
+}
+
 function saveColorVariantsSequence() {
    
     if (document.readyState === 'loading') {
@@ -1058,9 +1103,9 @@ function saveColorVariantsSequence() {
         return;
     }
 
-    // Check sessionStorage for saved data
+    // Check localStorage for saved data
     const storageKey = `colorSequence_${productTitle}`;
-    const savedData = sessionStorage.getItem(storageKey);
+    const savedData = localStorage.getItem(storageKey);
 
     if (savedData) {
         // Saved data exists - reorder lists to match saved sequence
@@ -1097,18 +1142,27 @@ function saveColorVariantsSequence() {
                 return;
             }
 
-            // Extract color names for each swatch in this list
-            const swatchNames = colorSwatches.map(swatch => getColorName(swatch));
+            // Extract color names only for visible swatches
+            const visibleSwatches = colorSwatches.filter(swatch => isSwatchVisible(swatch));
+            const swatchNames = visibleSwatches.map(swatch => getColorName(swatch));
 
             // Save to appropriate array
             if (listIndex === 0) {
                 array1.push(...swatchNames);
+                console.log('List 1 (original order):', swatchNames);
             } else if (listIndex === 1) {
-                array2.push(...swatchNames);
+                // Sort array2 by predefined order
+                const sortedSwatchNames = sortColorsByPredefinedOrder(swatchNames);
+                array2.push(...sortedSwatchNames);
+                console.log('List 2 (before sorting):', swatchNames);
+                console.log('List 2 (after sorting):', sortedSwatchNames);
+                
+                // Immediately reorder the DOM to match sorted order
+                reorderSwatchesBySequence(colorSwatchList, sortedSwatchNames);
             }
         });
 
-        // Save to sessionStorage
+        // Save to localStorage
         const dataToSave = {
             array1: array1,
             array2: array2,
@@ -1116,12 +1170,12 @@ function saveColorVariantsSequence() {
         };
         
         try {
-            sessionStorage.setItem(storageKey, JSON.stringify(dataToSave));
+            localStorage.setItem(storageKey, JSON.stringify(dataToSave));
             console.log('✅ Initial sequence saved for:', productTitle);
             console.log('List 1:', array1);
-            console.log('List 2:', array2);
+            console.log('List 2 (sorted by predefined order):', array2);
         } catch (e) {
-            console.error('Failed to save to sessionStorage:', e);
+            console.error('Failed to save to localStorage:', e);
         }
 
         // Also save to window for easy access
@@ -1137,9 +1191,13 @@ function reorderSwatchesBySequence(swatchList, savedOrder) {
         return;
     }
     
-    // Create a map of color names to elements (case-insensitive)
+    // Separate visible and hidden swatches
+    const visibleSwatches = currentSwatches.filter(swatch => isSwatchVisible(swatch));
+    const hiddenSwatches = currentSwatches.filter(swatch => !isSwatchVisible(swatch));
+    
+    // Create a map of color names to elements (case-insensitive) for visible swatches
     const swatchMap = new Map();
-    currentSwatches.forEach(swatch => {
+    visibleSwatches.forEach(swatch => {
         const colorName = getColorName(swatch);
         swatchMap.set(colorName.toLowerCase(), {
             originalName: colorName,
@@ -1150,7 +1208,7 @@ function reorderSwatchesBySequence(swatchList, savedOrder) {
     // Create document fragment with correct order
     const fragment = document.createDocumentFragment();
     
-    // Add swatches in saved order
+    // Add visible swatches in saved order
     savedOrder.forEach((colorName) => {
         const swatchData = swatchMap.get(colorName.toLowerCase());
         if (swatchData) {
@@ -1159,9 +1217,14 @@ function reorderSwatchesBySequence(swatchList, savedOrder) {
         }
     });
     
-    // Append any remaining swatches that weren't in saved order
+    // Append any remaining visible swatches that weren't in saved order
     swatchMap.forEach((swatchData) => {
         fragment.appendChild(swatchData.element);
+    });
+    
+    // Append all hidden swatches at the end
+    hiddenSwatches.forEach(swatch => {
+        fragment.appendChild(swatch);
     });
     
     // Replace the list contents
@@ -1169,9 +1232,10 @@ function reorderSwatchesBySequence(swatchList, savedOrder) {
     swatchList.appendChild(fragment);
     
     // Verify the new order
-    const newOrder = Array.from(swatchList.querySelectorAll('.color-swatch'))
+    const newVisibleOrder = Array.from(swatchList.querySelectorAll('.color-swatch'))
+        .filter(swatch => isSwatchVisible(swatch))
         .map(swatch => getColorName(swatch));
-    console.log('New order:', newOrder);
+    console.log('New visible order:', newVisibleOrder);
 }
 
 // Initialize on DOM ready
@@ -1186,7 +1250,7 @@ window.addEventListener('load', function() {
     const productTitle = getProductTitle();
     if (productTitle) {
         const storageKey = `colorSequence_${productTitle}`;
-        const savedData = sessionStorage.getItem(storageKey);
+        const savedData = localStorage.getItem(storageKey);
         
         if (!savedData) {
             saveColorVariantsSequence();
