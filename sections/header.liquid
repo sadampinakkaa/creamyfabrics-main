@@ -142,12 +142,21 @@ IMPLEMENTATION NOTE: the header in Focal is pretty complex as it allows a lot of
             </button>
           {%- endif -%}
 
+          {%- comment -%}
+          ============================================================
+          SEARCH BUTTON #1 - MOBILE (COMMENTED OUT)
+          ============================================================
           <a href="{{ routes.search_url }}" is="toggle-link" class="header__icon-wrapper tap-area {% if section.settings.header_layout == 'logo_center_search_open' %}hidden-lap{% endif %} hidden-desk" aria-controls="search-drawer" aria-expanded="false" aria-label="{{ 'search.general.title' | t | escape }}">
             {%- render 'icon' with 'header-search', class: 'new-big-redesign-ab-test-a' -%}
             {%- render 'icon' with 'header-search-b', class: 'new-big-redesign-ab-test-b' -%}
           </a>
+          {%- endcomment -%}
         </div>
 
+        {%- comment -%}
+        ============================================================
+        SEARCH BAR #2 - FOR LOGO_CENTER_SEARCH_OPEN LAYOUT (COMMENTED OUT)
+        ============================================================
         {%- if section.settings.header_layout == 'logo_center_search_open' -%}
           <div class="header__search-bar predictive-search hidden-pocket">
             <form class="predictive-search__form" action="{{ routes.search_url }}" method="get" role="search">
@@ -158,6 +167,7 @@ IMPLEMENTATION NOTE: the header in Focal is pretty complex as it allows a lot of
             </form>
           </div>
         {%- endif -%}
+        {%- endcomment -%}
       </nav>
 
       <!-- LOGO PART -->
@@ -278,12 +288,17 @@ IMPLEMENTATION NOTE: the header in Focal is pretty complex as it allows a lot of
             {%- render 'icon' with 'header-email' -%}
           </button>
 
+          {%- comment -%}
+          ============================================================
+          SEARCH BUTTON #3 - DESKTOP (COMMENTED OUT)
+          ============================================================
           {%- if section.settings.header_layout != 'logo_center_search_open' -%}
             <a href="{{ routes.search_url }}" is="toggle-link" class="header__icon-wrapper tap-area hidden-pocket hidden-lap {% unless section.settings.show_icons %}hidden-desk{% endunless %}" aria-label="{{ 'search.general.title' | t | escape }}" aria-controls="search-drawer" aria-expanded="false">
               {%- render 'icon' with 'header-search', class: 'new-big-redesign-ab-test-a' -%}
               {%- render 'icon' with 'header-search-b', class: 'new-big-redesign-ab-test-b' -%}
             </a>
           {%- endif -%}
+          {%- endcomment -%}
 
           {%- if shop.customer_accounts_enabled -%}
             <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__icon-wrapper tap-area hidden-phone {% unless section.settings.show_icons %}hidden-desk{% endunless %}" aria-label="{% if customer %}{{ 'header.general.account' | t | escape }}{% else %}{{ 'header.general.login' | t | escape }}{% endif %}">
@@ -317,11 +332,16 @@ IMPLEMENTATION NOTE: the header in Focal is pretty complex as it allows a lot of
               </li>
             {%- endcomment -%}
 
+            {%- comment -%}
+            ============================================================
+            SEARCH LINK #4 - TEXT LINK (COMMENTED OUT)
+            ============================================================
             {%- if section.settings.header_layout != 'logo_center_search_open' -%}
               <li class="header__linklist-item">
                 <a href="{{ routes.search_url }}" is="toggle-link" aria-controls="search-drawer" aria-expanded="false">{{ 'search.general.title' | t | escape }}</a>
               </li>
             {%- endif -%}
+            {%- endcomment -%}
 
             {%- if shop.customer_accounts_enabled -%}
               <li class="header__linklist-item">
@@ -372,12 +392,15 @@ MOBILE MENU DRAWER
 {%- render 'mobile-menu', menu: menu -%}
 
 {%- comment -%}
+============================================================
+SEARCH DRAWER #5 - PREDICTIVE SEARCH COMPONENT (COMMENTED OUT)
+============================================================
 ------------------------------------------------------------------------------------
 SEARCH DRAWER
 ------------------------------------------------------------------------------------
-{%- endcomment -%}
 
 {%- render 'predictive-search' -%}
+{%- endcomment -%}
 
 <script>
   (() => {
@@ -402,7 +425,6 @@ SEARCH DRAWER
     "url": {{ shop.url | append: page.url | json }}
   }
 </script> <script>document.addEventListener("startasyncloading",(function(){document.querySelectorAll("script[data-src]").forEach((t=>{const c=t.dataset.src;null!=c&&(t.src=c,t.removeAttribute("data-src"))}))}));</script>
- 
 
 {% schema %}
 {
